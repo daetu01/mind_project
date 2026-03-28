@@ -32,6 +32,8 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/raid_db
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=pass
+      - SPRING_DATA_REDIS_HOST=dais-redis
+      - SPRING_DATA_REDIS_PORT=6379
     depends_on:
       - db
       - redis # ⭐ 추가: Redis가 먼저 떠야 함

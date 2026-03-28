@@ -7,3 +7,12 @@ what/build/
 # 프론트엔드 빌드 결과물 제외
 mind_project_front/dist/
 node_modules/
+
+# 환경 변수 파일 (개인 설정은 커밋하지 않음)
+mind_project_front/.env.local
+mind_project_front/.env.*.local
+mind_project_front/.env.production
+
+# OS/IDE 임시 파일
+.DS_Store
+Thumbs.db
