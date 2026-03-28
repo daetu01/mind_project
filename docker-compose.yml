@@ -8,6 +8,7 @@ services:
       - "80:80"
     volumes:
       - ./mind_project_front/dist:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     restart: always
 
   # Redis 설정
@@ -15,7 +16,7 @@ services:
     image: redis:latest
     container_name: dais-redis
     ports:
-      - "6379:6379"
+      - "6380:6379"
     volumes:
       - redis_data:/data
     restart: always
@@ -33,6 +34,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=pass
     depends_on:
       - db
+      - redis # ⭐ 추가: Redis가 먼저 떠야 함
     restart: always
 
   # 3. Database (MySQL)
@@ -52,3 +54,4 @@ services:
   # 파일 맨 아래(services와 같은 레벨)에 추가
 volumes:
   mysql_data:
+  redis_data:

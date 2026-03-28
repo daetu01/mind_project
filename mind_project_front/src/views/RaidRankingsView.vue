@@ -3,6 +3,20 @@ import { computed, onMounted, ref, watch } from 'vue'
 
 const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '')
 
+function apiUrl (path) {
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`
+  if (!API_BASE_URL) return normalizedPath
+
+  const baseHasApiSuffix = API_BASE_URL.endsWith('/api')
+  const pathHasApiPrefix = normalizedPath.startsWith('/api/') || normalizedPath === '/api'
+
+  if (baseHasApiSuffix && pathHasApiPrefix) {
+    return `${API_BASE_URL}${normalizedPath.replace(/^\/api/, '')}`
+  }
+
+  return `${API_BASE_URL}${normalizedPath}`
+}
+
 async function fetchRaids ({ page, size, sort }) {
   const qs = new URLSearchParams({
     page: String(page),
@@ -13,7 +27,7 @@ async function fetchRaids ({ page, size, sort }) {
     qs.set('sort', sort)
   }
 
-  const response = await fetch(`${API_BASE_URL}/api/raids?${qs.toString()}`)
+  const response = await fetch(`${apiUrl('/api/raids')}?${qs.toString()}`)
   if (!response.ok) {
     throw new Error(`Failed to fetch raids: ${response.status}`)
   }
@@ -268,7 +282,7 @@ function formatBestTimeMinutes (seconds) {
                 <td class="px-6 py-4 text-sm text-apple-black tabular-nums">{{ Number(row.memberCount ??
                   0).toLocaleString() }}</td>
                 <td class="px-6 py-4 text-sm text-apple-black tabular-nums">{{ Number(row.score ?? 0).toLocaleString()
-                }}</td>
+                  }}</td>
                 <td class="px-6 py-4 text-sm text-apple-black tabular-nums">{{ formatBestTimeMinutes(row.bestTime) }}
                 </td>
                 <td class="px-6 py-4 text-sm text-apple-secondary tabular-nums">{{ row.updatedAt }}</td>
