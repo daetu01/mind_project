@@ -3,7 +3,7 @@ mysql/data/
 # 혹시 모르니 모든 로그 파일 제외
 *.log
 # 백엔드 빌드 결과물 제외
-backend/build/
+what/build/
 # 프론트엔드 빌드 결과물 제외
 mind_project_front/dist/
 node_modules/
