@@ -32,7 +32,7 @@ jobs:
 
       - name: Build & Push Backend Image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/spring-api ./backend
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/spring-api ./what
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/spring-api
 
       # 2. 서버에서 배포 실행
