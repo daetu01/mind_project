@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    # 1. DB 연결 설정 (본인의 DB 정보에 맞게 수정)
+    url: jdbc:mysql://localhost:3306/testschema?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: root1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    # 2. JPA/Hibernate 설정
+    hibernate:
+      ddl-auto: create # 엔티티 변경 시 DB 테이블 자동 갱신
+    show-sql: true # 실행되는 SQL을 콘솔에 출력
+    properties:
+      hibernate:
+        format_sql: true # SQL을 보기 좋게 정렬해서 출력
+        dialect: org.hibernate.dialect.MySQLDialect # MySQL 문법 사용 명시
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+# 로그 레벨 설정 (선택사항: 쿼리 파라미터 확인용)
+logging:
+  level:
+    org.hibernate.orm.jdbc.bind: trace

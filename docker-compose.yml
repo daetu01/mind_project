@@ -10,6 +10,16 @@ services:
       - ./mind_project_front/dist:/usr/share/nginx/html:ro
     restart: always
 
+  # Redis 설정
+  redis:
+    image: redis:latest
+    container_name: dais-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: always
+
     # 2. Backend (Spring Boot)
   backend:
     image: totodle/spring-api:latest
