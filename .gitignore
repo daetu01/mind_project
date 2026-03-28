@@ -1,0 +1,9 @@
+# MySQL 데이터 제외
+mysql/data/
+# 혹시 모르니 모든 로그 파일 제외
+*.log
+# 백엔드 빌드 결과물 제외
+backend/build/
+# 프론트엔드 빌드 결과물 제외
+mind_project_front/dist/
+node_modules/

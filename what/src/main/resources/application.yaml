@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    # 'db'는 docker-compose에 정의한 서비스 이름입니다.
+    url: jdbc:mysql://db:3306/raid_db?serverTimezone=Asia/Seoul
+    username: root
+    password: pass
+  jpa:
+    hibernate:
+      ddl-auto: update # 엔티티 만들면 테이블 자동으로 생성해줌
+    show-sql: true

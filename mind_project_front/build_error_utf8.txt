@@ -1,0 +1,80 @@
+﻿
+> mind_project_front@0.0.0 build
+> vite build
+
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32m??[39m 12 modules transformed.
+node.exe : [31m??[39m 
+Build failed in 311ms
+위치 줄:1 문자:1
++ & "C:\Program Files\n
+odejs/node.exe" "C:\Pro
+gram Files\nodejs/node_
+mo ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: ([31m??[39m B   
+ uild failed in 311    
+ms:String) [], Rem    o
+teException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+[31merror during build
+:
+[31m[vite:css] [postcs
+s] It looks like you're
+ trying to use `tailwin
+dcss` directly as a Pos
+tCSS plugin. The PostCS
+S plugin has moved to a
+ separate package, so t
+o continue using Tailwi
+nd CSS with PostCSS you
+'ll need to install `@t
+ailwindcss/postcss` and
+ update your PostCSS co
+nfiguration.[31m
+file: [36mC:/Users/dai
+sw/OneDrive/Desktop/min
+dProject/mind_project_f
+ront/src/style.css:unde
+fined:NaN[31m
+    at at (C:\Users\dai
+sw\OneDrive\Desktop\min
+dProject\mind_project_f
+ront\node_modules\tailw
+indcss\dist\lib.js:38:1
+643)
+    at LazyResult.runOn
+Root (C:\Users\daisw\On
+eDrive\Desktop\mindProj
+ect\mind_project_front\
+node_modules\postcss\li
+b\lazy-result.js:361:16
+)
+    at LazyResult.runAs
+ync (C:\Users\daisw\One
+Drive\Desktop\mindProje
+ct\mind_project_front\n
+ode_modules\postcss\lib
+\lazy-result.js:290:26)
+    at LazyResult.async
+ (C:\Users\daisw\OneDri
+ve\Desktop\mindProject\
+mind_project_front\node
+_modules\postcss\lib\la
+zy-result.js:192:30)
+    at LazyResult.then 
+(C:\Users\daisw\OneDriv
+e\Desktop\mindProject\m
+ind_project_front\node_
+modules\postcss\lib\laz
+y-result.js:436:17)[39
+m

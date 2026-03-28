@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: my-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./mind_project_front/dist:/usr/share/nginx/html:ro
+    restart: always
+
+    # 2. Backend (Spring Boot)
+  backend:
+    image: totodle/spring-api:latest
+    #build: ./what # backend 폴더의 Dockerfile을 읽어서 빌드
+    container_name: spring-api
+    expose:
+      - "8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/raid_db
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=pass
+    depends_on:
+      - db
+    restart: always
+
+  # 3. Database (MySQL)
+  db:
+    image: mysql:8.0
+    container_name: my-db
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: raid_db
+    ports:
+      - "3307:3306" # 로컬 DB 툴(DBeaver 등) 접속용
+    volumes:
+      # 수정 전: - ./mysql/data:/var/lib/mysql
+      # 수정 후: 아래처럼 이름만 적으세요 (네임드 볼륨)
+      - mysql_data:/var/lib/mysql
+    restart: always
+  # 파일 맨 아래(services와 같은 레벨)에 추가
+volumes:
+  mysql_data:
