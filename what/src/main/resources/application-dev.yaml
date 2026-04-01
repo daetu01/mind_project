@@ -1,15 +1,35 @@
 spring:
   datasource:
     # 'db'는 docker-compose에 정의한 서비스 이름입니다.
-    url: jdbc:mysql://db:3306/raid_db?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://my-db:3306/raid_db?serverTimezone=Asia/Seoul
     username: root
     password: pass
   jpa:
     hibernate:
       ddl-auto: create # 엔티티 만들면 테이블 자동으로 생성해줌
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
 
   data:
     redis:
       host: dais-redis
       port: 6379
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus, health, info
+  endpoint:
+    prometheus:
+      enabled: true
+    health:
+      show-details: always
+  metrics:
+    enable:
+      jvm: true # JVM 관련 메트릭 활성화
+    tags:
+      application: what-api # Grafana에서 구분할 앱 이름

@@ -38,6 +38,11 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+	// 스프링 부트 관리 및 모니터링 도구
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	// Prometheus가 이해할 수 있는 포맷으로 지표 변환
+	implementation 'io.micrometer:micrometer-registry-prometheus'
 }
 
 tasks.named('test') {
