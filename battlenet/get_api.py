@@ -75,3 +75,36 @@ def get_mythic_score(realm: str, name: str):
         "name": name, 
         "score": data.get("current_mythic_rating", {}).get("rating", 0) # 점수가 없으면 0으로 처리  
     }
+
+@app.get("/wow/character-card/{realm}/{name}")
+def get_character_card(realm:str, name:str):
+    token = get_access_token()
+    headers = {"Authorization": f"Bearer {token}", "Battlenet-Namespace": "profile-kr"}
+    params = {"locale": "ko_KR"}
+
+    # 1. 캐릭터 기본 정보 가져오기
+    summary_url = f"https://kr.api.blizzard.com/profile/wow/character/{realm.lower()}/{name.lower()}"
+    summary_res = requests.get(summary_url, headers=headers, params=params)
+    if summary_res.status_code != 200:
+        raise HTTPException(status_code=404, detail="캐릭터를 찾을 수 없습니다.")
+    summary_data = summary_res.json()
+
+    # 2. 캐릭터 미디어(이미지) 정보 가져오기
+    media_url = summary_data["media"]["href"]
+    media_res = requests.get(media_url, headers=headers) # 이미 href에 namespace가 포함되어 있음
+    media_data = media_res.json()
+
+    # 3. 이미지 리스트에서 필요한 것만 추출 (보통 avatar, main, inset 등이 있음)
+    images = {}
+    for asset in media_data.get("assets", []):
+        images[asset["key"]] = asset["value"]
+
+    # 4. 결과 합치기 (이름, 레벨, 직업, 아이템레벨 + 이미지)
+    return {
+        "name": summary_data["name"],
+        "level": summary_data["level"],
+        "class": summary_data["character_class"]["name"],
+        "spec": summary_data["active_spec"]["name"],
+        "item_level": summary_data["equipped_item_level"],
+        "images": images  # 여기서 이미지가 튀어나옵니다!
+    }
