@@ -9,6 +9,7 @@
         <!-- Navigation Links -->
         <div class="hidden md:flex space-x-8">
           <RouterLink :to="{ path: '/', hash: '#raid-matcher' }" class="text-apple-black hover:text-wow-purple text-xs font-medium tracking-wide transition-colors duration-300">Raid Matcher</RouterLink>
+          <RouterLink to="/character-search" class="text-apple-black hover:text-wow-purple text-xs font-medium tracking-wide transition-colors duration-300">Character Search</RouterLink>
           <RouterLink to="/raid-rankings" class="text-apple-black hover:text-wow-purple text-xs font-medium tracking-wide transition-colors duration-300">Raid Rankings</RouterLink>
           <RouterLink to="/matching" class="text-apple-black hover:text-wow-purple text-xs font-medium tracking-wide transition-colors duration-300">Matching</RouterLink>
           <RouterLink :to="{ path: '/', hash: '#console' }" class="text-apple-black hover:text-wow-purple text-xs font-medium tracking-wide transition-colors duration-300">Console(Server Status)</RouterLink>

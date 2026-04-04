@@ -22,6 +22,11 @@ const router = createRouter({
       component: () => import('../views/HomeView.vue'),
     },
     {
+      path: '/character-search',
+      name: 'character-search',
+      component: () => import('../views/CharacterSearchView.vue'),
+    },
+    {
       path: '/raid-rankings',
       name: 'raid-rankings',
       component: () => import('../views/RaidRankingsView.vue'),
