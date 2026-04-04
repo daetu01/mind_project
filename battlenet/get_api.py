@@ -2,9 +2,24 @@ from fastapi import FastAPI, HTTPException
 import requests
 import os
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware # 추가
 load_dotenv() # .env 파일을 읽어서 환경 변수로 등록해줌
 
 app = FastAPI()
+
+# 1. 허용할 도메인 목록 (리액트나 뷰 서버 주소)
+origins = [
+    "http://localhost:5173",  # Vite 기본 포트
+    "http://127.0.0.1:5173",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # 환경 변수 체크 (없으면 에러 발생)
 CLIENT_ID = os.getenv("BATTLENET_CLIENT_ID")
@@ -29,6 +44,24 @@ def get_access_token():
         return _cached_token
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"OAuth 인증 실패: {str(e)}")
+
+def _fetch_href_json(href: str, token: str):
+    if not href or not isinstance(href, str):
+        return None
+
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Battlenet-Namespace": "profile-kr",
+    }
+
+    try:
+        res = requests.get(href, headers=headers, params={"locale": "ko_KR"})
+        if res.status_code == 404:
+            return {"error": "not_found", "href": href}
+        res.raise_for_status()
+        return res.json()
+    except Exception as e:
+        return {"error": str(e), "href": href}
 
 @app.get("/wow/character/{realm}/{name}")
 def get_wow_character(realm: str, name: str):
@@ -57,6 +90,29 @@ def get_wow_character(realm: str, name: str):
         return {"error": "캐릭터를 찾을 수 없습니다. 오랫동안 접속하지 않았거나 이름이 틀렸을 수 있습니다."}
         
     return response.json()
+
+@app.get("/wow/character-bundle/{realm}/{name}")
+def get_wow_character_bundle(realm: str, name: str):
+    token = get_access_token()
+    if not token:
+        raise HTTPException(status_code=401, detail="토큰을 가져올 수 없습니다.")
+
+    summary = get_wow_character(realm, name)
+    if isinstance(summary, dict) and summary.get("error"):
+        return summary
+
+    equipment_href = (summary.get("equipment") or {}).get("href")
+    statistics_href = (summary.get("statistics") or {}).get("href")
+    specializations_href = (summary.get("specializations") or {}).get("href")
+    mythic_keystone_profile_href = (summary.get("mythic_keystone_profile") or {}).get("href")
+
+    return {
+        "summary": summary,
+        "equipment": _fetch_href_json(equipment_href, token),
+        "statistics": _fetch_href_json(statistics_href, token),
+        "specializations": _fetch_href_json(specializations_href, token),
+        "mythic_keystone_profile": _fetch_href_json(mythic_keystone_profile_href, token),
+    }
 
 @app.get("/wow/rio/{realm}/{name}")
 def get_mythic_score(realm: str, name: str):

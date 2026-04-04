@@ -16,3 +16,5 @@ mind_project_front/.env.production
 # OS/IDE 임시 파일
 .DS_Store
 Thumbs.db
+
+.env
