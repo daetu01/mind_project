@@ -31,6 +31,26 @@ const router = createRouter({
       name: 'matching',
       component: () => import('../views/MatchingView.vue'),
     },
+    {
+      path: '/lfg',
+      name: 'lfg',
+      component: () => import('../views/LfgBoardView.vue'),
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: () => import('../views/CharacterProfileView.vue'),
+    },
+    {
+      path: '/queue',
+      name: 'queue',
+      component: () => import('../views/QueueDashboardView.vue'),
+    },
+    {
+      path: '/guild/:name',
+      name: 'guild-detail',
+      component: () => import('../views/GuildDetailView.vue'),
+    },
   ],
 })
 

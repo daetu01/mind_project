@@ -1,24 +1,93 @@
 @import "tailwindcss";
 
 @theme {
-  --color-apple-white: #ffffff;
-  --color-apple-gray: #f5f5f7;
-  --color-apple-black: #1d1d1f;
+  /* ── Dark Foundation ─────────────────────────────── */
+  --color-night:    #080810;   /* deepest background    */
+  --color-obsidian: #0f0f1a;   /* card surface          */
+  --color-shadow:   #16162a;   /* elevated surface      */
+  --color-dusk:     #1c1c30;   /* overlay / hover       */
+  --color-rim:      #2a2a4a;   /* border                */
+
+  /* ── Text ───────────────────────────────────────── */
+  --color-silver: #e8e8f0;     /* primary text          */
+  --color-steel:  #6b6b8a;     /* muted / secondary     */
+  --color-iron:   #3d3d5c;     /* dimmed text           */
+
+  /* ── WoW Item-Quality Colors ────────────────────── */
+  --color-wow-legendary: #ff8000;
+  --color-wow-epic:      #a335ee;
+  --color-wow-rare:      #0070dd;
+  --color-wow-uncommon:  #1eff00;
+  --color-wow-common:    #9d9d9d;
+
+  /* ── Aliases (backward compat) ──────────────────── */
+  --color-wow-purple:      #a335ee;
+  --color-wow-gold:        #ff8000;
+  --color-apple-white:     #ffffff;
+  --color-apple-gray:      #f5f5f7;
+  --color-apple-black:     #1d1d1f;
   --color-apple-secondary: #86868b;
-  --color-wow-purple: #a335ee;
-  
-  --font-sans: 'Inter', '-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'sans-serif';
-  
-  --tracking-tight: -0.015em;
+
+  /* ── Typography ─────────────────────────────────── */
+  --font-sans: 'Inter', '-apple-system', 'BlinkMacSystemFont', 'San Francisco',
+               'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  --tracking-tight:   -0.015em;
   --tracking-tighter: -0.03em;
 }
 
 @layer base {
   body {
-    background-color: var(--color-apple-gray);
-    color: var(--color-apple-black);
+    background-color: var(--color-night);
+    color: var(--color-silver);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-wow-epic);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar       { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: var(--color-night); }
+  ::-webkit-scrollbar-thumb { background: var(--color-rim); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-wow-epic); }
+}
+
+/* Dark option/select fallback */
+@layer utilities {
+  option {
+    background-color: var(--color-obsidian);
+    color: var(--color-silver);
+  }
+}
+
+/* Keystone range slider */
+@layer base {
+  .key-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .key-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+  }
+  .key-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    cursor: pointer;
   }
 }
