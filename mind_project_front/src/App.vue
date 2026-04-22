@@ -1,5 +1,6 @@
 <script setup>
-import FloatingNav from './components/FloatingNav.vue';
+import FloatingNav from './components/FloatingNav.vue'
+import AppFooter from './components/AppFooter.vue'
 import { RouterView } from 'vue-router'
 </script>
 
@@ -19,5 +20,6 @@ import { RouterView } from 'vue-router'
     <main class="pt-14 relative z-10">
       <RouterView />
     </main>
+    <AppFooter />
   </div>
 </template>

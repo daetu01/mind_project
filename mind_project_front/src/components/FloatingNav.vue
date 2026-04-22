@@ -19,11 +19,17 @@
         <!-- Desktop nav -->
         <div class="hidden md:flex items-center space-x-5">
           <RouterLink to="/raid-rankings"
-            class="text-steel hover:text-wow-epic text-xs font-medium tracking-wide transition-colors duration-300">
+            :class="['text-xs font-medium tracking-wide transition-colors duration-300',
+              route.path === '/raid-rankings'
+                ? 'text-wow-epic border-b border-wow-epic/50 pb-px'
+                : 'text-steel hover:text-wow-epic']">
             Rankings
           </RouterLink>
           <RouterLink to="/queue"
-            class="flex items-center gap-1.5 text-steel hover:text-wow-epic text-xs font-medium tracking-wide transition-colors duration-300">
+            :class="['flex items-center gap-1.5 text-xs font-medium tracking-wide transition-colors duration-300',
+              route.path === '/queue'
+                ? 'text-wow-epic border-b border-wow-epic/50 pb-px'
+                : 'text-steel hover:text-wow-epic']">
             <span class="relative flex h-1.5 w-1.5">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-wow-uncommon opacity-60"></span>
               <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-wow-uncommon"></span>
@@ -31,17 +37,27 @@
             대기열
           </RouterLink>
           <RouterLink to="/lfg"
-            class="text-steel hover:text-wow-epic text-xs font-medium tracking-wide transition-colors duration-300">
+            :class="['text-xs font-medium tracking-wide transition-colors duration-300',
+              route.path === '/lfg'
+                ? 'text-wow-epic border-b border-wow-epic/50 pb-px'
+                : 'text-steel hover:text-wow-epic']">
             공대 모집
           </RouterLink>
           <RouterLink to="/matching"
-            class="text-steel hover:text-wow-epic text-xs font-medium tracking-wide transition-colors duration-300">
+            :class="['text-xs font-medium tracking-wide transition-colors duration-300',
+              route.path === '/matching'
+                ? 'text-wow-epic border-b border-wow-epic/50 pb-px'
+                : 'text-steel hover:text-wow-epic']">
             Matching
           </RouterLink>
           <RouterLink to="/profile"
-            class="flex items-center gap-1.5 h-8 px-4 rounded-full border border-rim/60 text-xs font-semibold
-                   text-steel hover:text-silver hover:border-rim transition-all duration-300"
-            style="background: rgba(22,22,42,0.8)">
+            :class="['flex items-center gap-1.5 h-8 px-4 rounded-full border text-xs font-semibold transition-all duration-300',
+              route.path === '/profile'
+                ? 'text-wow-epic border-wow-epic/50'
+                : 'text-steel hover:text-silver border-rim/60 hover:border-rim']"
+            :style="route.path === '/profile'
+              ? 'background: rgba(163,53,238,0.1)'
+              : 'background: rgba(22,22,42,0.8)'">
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
             </svg>
@@ -63,4 +79,6 @@
 </template>
 
 <script setup>
+import { useRoute } from 'vue-router'
+const route = useRoute()
 </script>
