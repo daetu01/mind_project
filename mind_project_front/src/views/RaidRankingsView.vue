@@ -204,7 +204,7 @@ function formatBestTimeMinutes (seconds) {
 
       <!-- Ranking mode tabs -->
       <div class="flex items-center h-12 p-1 rounded-2xl border border-rim/50 mb-6 w-fit"
-           style="background: rgba(15,15,26,0.8)">
+           style="background: var(--bg-card)">
         <button type="button"
           class="flex items-center gap-2 h-10 px-5 rounded-xl text-sm font-semibold transition-all duration-200"
           :class="rankTab==='raid'?'text-white':'text-steel hover:text-silver'"
@@ -231,7 +231,7 @@ function formatBestTimeMinutes (seconds) {
 
       <!-- ═══ KEYSTONE RANKINGS ════════════════════════ -->
       <div v-if="rankTab==='key'" class="rounded-[1.5rem] border border-rim/50 overflow-hidden"
-           style="background:rgba(15,15,26,0.75);backdrop-filter:blur(16px)">
+           style="background:var(--bg-card-light);backdrop-filter:blur(16px)">
         <div class="px-6 py-4 border-b border-rim/40 flex items-center justify-between">
           <div class="text-sm text-steel">
             Mythic+ 시즌 랭킹 · <span class="text-silver font-semibold">{{ keystoneRows.length }}</span>명
@@ -246,7 +246,7 @@ function formatBestTimeMinutes (seconds) {
           <table class="min-w-full text-left">
             <thead>
               <tr class="text-xs uppercase tracking-widest text-iron border-b border-rim/30"
-                  style="background:rgba(8,8,16,0.5)">
+                  style="background:var(--bg-header)">
                 <th class="px-6 py-3 font-semibold">순위</th>
                 <th class="px-6 py-3 font-semibold">플레이어</th>
                 <th class="px-6 py-3 font-semibold">서버</th>
@@ -302,7 +302,7 @@ function formatBestTimeMinutes (seconds) {
           <!-- Search field toggle -->
           <div class="flex items-center gap-2">
             <div class="h-11 p-1 rounded-full border border-rim/50 flex items-center"
-                 style="background: rgba(15,15,26,0.8); backdrop-filter: blur(8px)"
+                 style="background: var(--bg-card); backdrop-filter: blur(8px)"
                  role="group" aria-label="Search field">
               <button type="button"
                 class="h-9 px-4 rounded-full text-sm font-semibold tracking-tight transition-all"
@@ -329,7 +329,7 @@ function formatBestTimeMinutes (seconds) {
                 class="h-11 w-full sm:w-64 rounded-full border border-rim/50 px-4 text-sm text-silver
                        placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-epic/40
                        focus:border-wow-epic/50 transition-all duration-200"
-                style="background: rgba(22,22,42,0.8); backdrop-filter: blur(8px)" />
+                style="background: var(--bg-button); backdrop-filter: blur(8px)" />
             </label>
           </div>
 
@@ -337,7 +337,7 @@ function formatBestTimeMinutes (seconds) {
           <button type="button"
             class="h-11 rounded-full border px-4 text-sm font-medium transition-all duration-200"
             :class="progressOnly ? 'text-white border-wow-uncommon/60' : 'text-steel border-rim/50 hover:text-silver hover:border-rim'"
-            :style="progressOnly ? 'background: rgba(30,255,0,0.1)' : 'background: rgba(22,22,42,0.8)'"
+            :style="progressOnly ? 'background: rgba(30,255,0,0.1)' : 'background: var(--bg-button)'"
             @click="progressOnly = !progressOnly">
             9/9만
           </button>
@@ -346,7 +346,7 @@ function formatBestTimeMinutes (seconds) {
 
       <!-- Table card -->
       <div class="rounded-[1.5rem] border border-rim/50 overflow-hidden"
-           style="background: rgba(15,15,26,0.75); backdrop-filter: blur(16px)">
+           style="background: var(--bg-card-light); backdrop-filter: blur(16px)">
 
         <!-- Card header -->
         <div class="px-6 py-4 border-b border-rim/40 flex items-center justify-between">
@@ -380,7 +380,7 @@ function formatBestTimeMinutes (seconds) {
           <table class="min-w-full text-left">
             <thead>
               <tr class="text-xs uppercase tracking-widest text-iron border-b border-rim/30"
-                  style="background: rgba(8,8,16,0.5)">
+                  style="background: var(--bg-header)">
                 <th class="px-6 py-3 font-semibold">순위</th>
                 <th class="px-6 py-3 font-semibold">길드</th>
                 <th class="px-6 py-3 font-semibold">서버</th>
@@ -442,7 +442,7 @@ function formatBestTimeMinutes (seconds) {
             <select v-model.number="pageSize"
               class="h-9 rounded-full border border-rim/50 px-3 text-sm text-silver
                      focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all"
-              style="background: rgba(22,22,42,0.8)">
+              style="background: var(--bg-button)">
               <option :value="10">10</option>
               <option :value="20">20</option>
               <option :value="50">50</option>
@@ -454,7 +454,7 @@ function formatBestTimeMinutes (seconds) {
             <button type="button"
               class="h-9 px-3 rounded-full border border-rim/50 text-sm font-medium text-steel
                      hover:text-silver hover:border-rim transition-all disabled:opacity-30 disabled:cursor-not-allowed"
-              style="background: rgba(22,22,42,0.8)"
+              style="background: var(--bg-button)"
               :disabled="currentPage === 1" @click="goToPage(currentPage - 1)">
               이전
             </button>
@@ -462,7 +462,7 @@ function formatBestTimeMinutes (seconds) {
             <button v-for="p in visiblePages" :key="p" type="button"
               class="h-9 w-9 rounded-full border text-sm font-semibold transition-all"
               :class="p === currentPage ? 'text-white border-wow-epic' : 'border-rim/50 text-steel hover:text-silver hover:border-rim'"
-              :style="p === currentPage ? 'background: #a335ee' : 'background: rgba(22,22,42,0.8)'"
+              :style="p === currentPage ? 'background: #a335ee' : 'background: var(--bg-button)'"
               @click="goToPage(p)">
               {{ p }}
             </button>
@@ -470,7 +470,7 @@ function formatBestTimeMinutes (seconds) {
             <button type="button"
               class="h-9 px-3 rounded-full border border-rim/50 text-sm font-medium text-steel
                      hover:text-silver hover:border-rim transition-all disabled:opacity-30 disabled:cursor-not-allowed"
-              style="background: rgba(22,22,42,0.8)"
+              style="background: var(--bg-button)"
               :disabled="currentPage === totalPages" @click="goToPage(currentPage + 1)">
               다음
             </button>

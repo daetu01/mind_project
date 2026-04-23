@@ -107,7 +107,7 @@ function keyBg(lv) {
   if (lv >= 20) return 'rgba(255,128,0,0.14)'
   if (lv >= 15) return 'rgba(163,53,238,0.14)'
   if (lv >= 10) return 'rgba(0,112,221,0.14)'
-  return 'rgba(42,42,74,0.5)'
+  return 'var(--bg-dim)'
 }
 function rioColor(score) {
   if (!score) return '#6b6b8a'
@@ -201,7 +201,7 @@ function submitKey() {
 
       <!-- Mode tabs -->
       <div class="flex items-center h-12 p-1 rounded-2xl border border-rim/50 mb-6 w-fit"
-           style="background: rgba(15,15,26,0.8)">
+           style="background: var(--bg-card)">
         <button type="button"
           class="flex items-center gap-2 h-10 px-5 rounded-xl text-sm font-semibold transition-all duration-200"
           :class="mode === 'raid' ? 'text-white' : 'text-steel hover:text-silver'"
@@ -231,7 +231,7 @@ function submitKey() {
         <!-- Raid filters -->
         <div class="flex flex-wrap gap-3 mb-6">
           <div class="flex items-center h-10 p-1 rounded-full border border-rim/50 gap-0.5"
-               style="background: rgba(15,15,26,0.8)">
+               style="background: var(--bg-card)">
             <button v-for="[v, l] in [['all','전체'],['tank','탱커'],['heal','힐러'],['dps','딜러']]" :key="v"
               type="button"
               class="h-8 px-3.5 rounded-full text-xs font-semibold transition-all duration-200"
@@ -240,7 +240,7 @@ function submitKey() {
               @click="raidRoleFilter = v">{{ l }}</button>
           </div>
           <div class="flex items-center h-10 p-1 rounded-full border border-rim/50 gap-0.5"
-               style="background: rgba(15,15,26,0.8)">
+               style="background: var(--bg-card)">
             <button v-for="[v, l] in [['all','난이도'],['Normal','N'],['Heroic','H'],['Mythic','M']]" :key="v"
               type="button"
               class="h-8 px-3.5 rounded-full text-xs font-semibold transition-all duration-200"
@@ -249,7 +249,7 @@ function submitKey() {
               @click="raidDiffFilter = v">{{ l }}</button>
           </div>
           <div class="flex items-center h-10 p-1 rounded-full border border-rim/50 gap-0.5"
-               style="background: rgba(15,15,26,0.8)">
+               style="background: var(--bg-card)">
             <button v-for="[v] in [['all'],['KR'],['US'],['EU']]" :key="v"
               type="button"
               class="h-8 px-3.5 rounded-full text-xs font-semibold transition-all duration-200"
@@ -265,7 +265,7 @@ function submitKey() {
           <TransitionGroup name="post">
             <div v-for="post in filteredRaids" :key="post.id"
                  class="group rounded-[1.5rem] border border-rim/50 p-6 transition-all duration-300 hover:border-rim"
-                 style="background: rgba(15,15,26,0.75); backdrop-filter: blur(12px)">
+                 style="background: var(--bg-card-light); backdrop-filter: blur(12px)">
               <div class="flex flex-wrap items-center gap-2 mb-3">
                 <span class="text-sm font-semibold text-silver">{{ post.guild }}</span>
                 <span class="text-iron text-xs">·</span>
@@ -285,33 +285,33 @@ function submitKey() {
               <div class="flex flex-wrap items-center gap-3 mb-4">
                 <div class="flex items-center gap-1.5 text-xs font-semibold" :class="post.slots.tank>0?'':'opacity-25'">
                   <span class="w-6 h-6 rounded-lg flex items-center justify-center"
-                        :style="post.slots.tank>0?'background:rgba(0,112,221,0.15)':'background:rgba(42,42,74,0.4)'">
+                        :style="post.slots.tank>0?'background:rgba(0,112,221,0.15)':'background:var(--bg-dim)'">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                         :style="post.slots.tank>0?'color:#0070dd':'color:#3d3d5c'">
+                         :style="post.slots.tank>0?'color:#0070dd':'color:var(--color-iron)'">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7l-9-5z"/>
                     </svg>
                   </span>
-                  <span :style="post.slots.tank>0?'color:#0070dd':'color:#3d3d5c'">탱커 {{ post.slots.tank }}</span>
+                  <span :style="post.slots.tank>0?'color:#0070dd':'color:var(--color-iron)'">탱커 {{ post.slots.tank }}</span>
                 </div>
                 <div class="flex items-center gap-1.5 text-xs font-semibold" :class="post.slots.heal>0?'':'opacity-25'">
                   <span class="w-6 h-6 rounded-lg flex items-center justify-center"
-                        :style="post.slots.heal>0?'background:rgba(30,255,0,0.1)':'background:rgba(42,42,74,0.4)'">
+                        :style="post.slots.heal>0?'background:rgba(30,255,0,0.1)':'background:var(--bg-dim)'">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                         :style="post.slots.heal>0?'color:#1eff00':'color:#3d3d5c'">
+                         :style="post.slots.heal>0?'color:#1eff00':'color:var(--color-iron)'">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
                     </svg>
                   </span>
-                  <span :style="post.slots.heal>0?'color:#1eff00':'color:#3d3d5c'">힐러 {{ post.slots.heal }}</span>
+                  <span :style="post.slots.heal>0?'color:#1eff00':'color:var(--color-iron)'">힐러 {{ post.slots.heal }}</span>
                 </div>
                 <div class="flex items-center gap-1.5 text-xs font-semibold" :class="post.slots.dps>0?'':'opacity-25'">
                   <span class="w-6 h-6 rounded-lg flex items-center justify-center"
-                        :style="post.slots.dps>0?'background:rgba(255,70,70,0.12)':'background:rgba(42,42,74,0.4)'">
+                        :style="post.slots.dps>0?'background:rgba(255,70,70,0.12)':'background:var(--bg-dim)'">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                         :style="post.slots.dps>0?'color:#ff4646':'color:#3d3d5c'">
+                         :style="post.slots.dps>0?'color:#ff4646':'color:var(--color-iron)'">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M14.5 10L21 3m0 0h-6m6 0v6M10 14l-7 7m0 0h6m-6 0v-6"/>
                     </svg>
                   </span>
-                  <span :style="post.slots.dps>0?'color:#ff4646':'color:#3d3d5c'">딜러 {{ post.slots.dps }}</span>
+                  <span :style="post.slots.dps>0?'color:#ff4646':'color:var(--color-iron)'">딜러 {{ post.slots.dps }}</span>
                 </div>
                 <div class="flex items-center gap-3 ml-auto text-xs text-iron">
                   <span v-if="post.ilvlReq">ilv {{ post.ilvlReq }}+</span>
@@ -325,7 +325,7 @@ function submitKey() {
                 <span class="text-xs text-iron ml-auto">{{ post.createdAt }}</span>
                 <button type="button"
                   class="flex items-center gap-1.5 h-9 px-4 rounded-full border border-rim/60 text-xs font-semibold text-steel hover:text-silver hover:border-rim transition-all"
-                  style="background:rgba(22,22,42,0.8)"
+                  style="background:var(--bg-button)"
                   @click="editPost(post)">
                   <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
@@ -334,7 +334,7 @@ function submitKey() {
                 </button>
                 <button type="button"
                   class="flex items-center gap-1.5 h-9 px-4 rounded-full border border-rim/60 text-xs font-semibold text-steel hover:text-silver hover:border-wow-epic/50 transition-all"
-                  style="background:rgba(22,22,42,0.8)"
+                  style="background:var(--bg-button)"
                   @click="applyToPost(post)">
                   지원하기
                   <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -356,14 +356,14 @@ function submitKey() {
           <select v-model="keyDungeonFilter"
             class="h-10 rounded-full border border-rim/50 px-4 text-xs font-semibold text-steel
                    focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all"
-            style="background: rgba(15,15,26,0.8)">
+            style="background: var(--bg-card)">
             <option value="all">모든 던전</option>
             <option v-for="d in DUNGEONS" :key="d" :value="d">{{ d }}</option>
           </select>
 
           <!-- Key level filter -->
           <div class="flex items-center h-10 p-1 rounded-full border border-rim/50 gap-0.5"
-               style="background: rgba(15,15,26,0.8)">
+               style="background: var(--bg-card)">
             <button v-for="[v, l] in [['all','전체'],['~9','~+9'],['10~14','+10~14'],['15~19','+15~19'],['20+','+20↑']]" :key="v"
               type="button"
               class="h-8 px-3 rounded-full text-xs font-semibold transition-all duration-200"
@@ -374,7 +374,7 @@ function submitKey() {
 
           <!-- Goal filter -->
           <div class="flex items-center h-10 p-1 rounded-full border border-rim/50 gap-0.5"
-               style="background: rgba(15,15,26,0.8)">
+               style="background: var(--bg-card)">
             <button v-for="[v, l] in [['all','목표'],['timer','타이머'],['clear','클리어']]" :key="v"
               type="button"
               class="h-8 px-3.5 rounded-full text-xs font-semibold transition-all duration-200"
@@ -391,7 +391,7 @@ function submitKey() {
           <TransitionGroup name="post">
             <div v-for="post in filteredKeys" :key="post.id"
                  class="group rounded-[1.5rem] border p-6 transition-all duration-300"
-                 :style="`background:rgba(15,15,26,0.75);backdrop-filter:blur(12px);border-color:${keyColor(post.keyLevel)}22`"
+                 :style="`background:var(--bg-card-light);backdrop-filter:blur(12px);border-color:${keyColor(post.keyLevel)}22`"
                  :class="'hover:border-rim'">
 
               <!-- Top row: player + key badge -->
@@ -428,33 +428,33 @@ function submitKey() {
               <div class="flex flex-wrap items-center gap-3 mb-4">
                 <div class="flex items-center gap-1.5 text-xs font-semibold" :class="post.slots.tank>0?'':'opacity-25'">
                   <span class="w-6 h-6 rounded-lg flex items-center justify-center"
-                        :style="post.slots.tank>0?'background:rgba(0,112,221,0.15)':'background:rgba(42,42,74,0.4)'">
+                        :style="post.slots.tank>0?'background:rgba(0,112,221,0.15)':'background:var(--bg-dim)'">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                         :style="post.slots.tank>0?'color:#0070dd':'color:#3d3d5c'">
+                         :style="post.slots.tank>0?'color:#0070dd':'color:var(--color-iron)'">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7l-9-5z"/>
                     </svg>
                   </span>
-                  <span :style="post.slots.tank>0?'color:#0070dd':'color:#3d3d5c'">탱커 {{ post.slots.tank }}</span>
+                  <span :style="post.slots.tank>0?'color:#0070dd':'color:var(--color-iron)'">탱커 {{ post.slots.tank }}</span>
                 </div>
                 <div class="flex items-center gap-1.5 text-xs font-semibold" :class="post.slots.heal>0?'':'opacity-25'">
                   <span class="w-6 h-6 rounded-lg flex items-center justify-center"
-                        :style="post.slots.heal>0?'background:rgba(30,255,0,0.1)':'background:rgba(42,42,74,0.4)'">
+                        :style="post.slots.heal>0?'background:rgba(30,255,0,0.1)':'background:var(--bg-dim)'">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                         :style="post.slots.heal>0?'color:#1eff00':'color:#3d3d5c'">
+                         :style="post.slots.heal>0?'color:#1eff00':'color:var(--color-iron)'">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
                     </svg>
                   </span>
-                  <span :style="post.slots.heal>0?'color:#1eff00':'color:#3d3d5c'">힐러 {{ post.slots.heal }}</span>
+                  <span :style="post.slots.heal>0?'color:#1eff00':'color:var(--color-iron)'">힐러 {{ post.slots.heal }}</span>
                 </div>
                 <div class="flex items-center gap-1.5 text-xs font-semibold" :class="post.slots.dps>0?'':'opacity-25'">
                   <span class="w-6 h-6 rounded-lg flex items-center justify-center"
-                        :style="post.slots.dps>0?'background:rgba(255,70,70,0.12)':'background:rgba(42,42,74,0.4)'">
+                        :style="post.slots.dps>0?'background:rgba(255,70,70,0.12)':'background:var(--bg-dim)'">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                         :style="post.slots.dps>0?'color:#ff4646':'color:#3d3d5c'">
+                         :style="post.slots.dps>0?'color:#ff4646':'color:var(--color-iron)'">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M14.5 10L21 3m0 0h-6m6 0v6M10 14l-7 7m0 0h6m-6 0v-6"/>
                     </svg>
                   </span>
-                  <span :style="post.slots.dps>0?'color:#ff4646':'color:#3d3d5c'">딜러 {{ post.slots.dps }}</span>
+                  <span :style="post.slots.dps>0?'color:#ff4646':'color:var(--color-iron)'">딜러 {{ post.slots.dps }}</span>
                 </div>
                 <div class="flex items-center gap-2 ml-auto text-xs">
                   <span v-if="post.ilvlReq" class="text-iron">ilv {{ post.ilvlReq }}+</span>
@@ -470,7 +470,7 @@ function submitKey() {
                 <span class="text-xs text-iron ml-auto">{{ post.createdAt }}</span>
                 <button type="button"
                   class="flex items-center gap-1.5 h-9 px-4 rounded-full border border-rim/60 text-xs font-semibold text-steel hover:text-silver hover:border-rim transition-all"
-                  style="background:rgba(22,22,42,0.8)"
+                  style="background:var(--bg-button)"
                   @click="editPost(post)">
                   <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
@@ -502,11 +502,11 @@ function submitKey() {
                 leave-active-class="transition-all duration-200 ease-in"  leave-from-class="opacity-100" leave-to-class="opacity-0">
       <div v-if="showModal"
            class="fixed inset-0 z-[100] flex items-center justify-center px-4 py-8 overflow-y-auto"
-           style="background:rgba(8,8,16,0.85);backdrop-filter:blur(16px)"
+           style="background:var(--bg-overlay);backdrop-filter:blur(16px)"
            @click.self="showModal=false">
         <Transition enter-active-class="transition-all duration-300 ease-out" enter-from-class="opacity-0 scale-95 translate-y-4" enter-to-class="opacity-100 scale-100 translate-y-0">
           <div v-if="showModal" class="relative w-full max-w-lg rounded-[2rem] border border-rim/50 overflow-hidden"
-               style="background:rgba(15,15,26,0.98)">
+               style="background:var(--bg-card-opaque)">
 
             <!-- Modal header with mode indicator -->
             <div class="px-8 py-5 border-b border-rim/40 flex items-center justify-between">
@@ -533,25 +533,25 @@ function submitKey() {
                   <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">길드명</label>
                   <input v-model="raidForm.guild" type="text" placeholder="어둠의 파수꾼"
                     class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all"
-                    style="background:rgba(22,22,42,0.9)"/>
+                    style="background:var(--bg-input)"/>
                 </div>
                 <div>
                   <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">서버</label>
                   <input v-model="raidForm.realm" type="text" placeholder="데스윙"
                     class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all"
-                    style="background:rgba(22,22,42,0.9)"/>
+                    style="background:var(--bg-input)"/>
                 </div>
               </div>
               <div class="grid grid-cols-2 gap-3">
                 <div>
                   <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">레이드</label>
-                  <select v-model="raidForm.raid" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:rgba(22,22,42,0.9)">
+                  <select v-model="raidForm.raid" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:var(--bg-input)">
                     <option>네루바르 궁전</option><option>아문 타울 니루프</option>
                   </select>
                 </div>
                 <div>
                   <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">난이도</label>
-                  <select v-model="raidForm.difficulty" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:rgba(22,22,42,0.9)">
+                  <select v-model="raidForm.difficulty" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:var(--bg-input)">
                     <option>Normal</option><option>Heroic</option><option>Mythic</option>
                   </select>
                 </div>
@@ -561,44 +561,44 @@ function submitKey() {
                 <div class="grid grid-cols-3 gap-3">
                   <div class="text-center">
                     <div class="text-xs text-wow-rare mb-1">탱커</div>
-                    <input v-model.number="raidForm.tankSlots" type="number" min="0" max="3" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver text-center focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:rgba(22,22,42,0.9)"/>
+                    <input v-model.number="raidForm.tankSlots" type="number" min="0" max="3" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver text-center focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:var(--bg-input)"/>
                   </div>
                   <div class="text-center">
                     <div class="text-xs text-wow-uncommon mb-1">힐러</div>
-                    <input v-model.number="raidForm.healSlots" type="number" min="0" max="5" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver text-center focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:rgba(22,22,42,0.9)"/>
+                    <input v-model.number="raidForm.healSlots" type="number" min="0" max="5" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver text-center focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:var(--bg-input)"/>
                   </div>
                   <div class="text-center">
                     <div class="text-xs mb-1" style="color:#ff4646">딜러</div>
-                    <input v-model.number="raidForm.dpsSlots" type="number" min="0" max="20" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver text-center focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:rgba(22,22,42,0.9)"/>
+                    <input v-model.number="raidForm.dpsSlots" type="number" min="0" max="20" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver text-center focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:var(--bg-input)"/>
                   </div>
                 </div>
               </div>
               <div class="grid grid-cols-3 gap-3">
                 <div>
                   <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">최소 ilvl</label>
-                  <input v-model="raidForm.ilvlReq" type="number" placeholder="600" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:rgba(22,22,42,0.9)"/>
+                  <input v-model="raidForm.ilvlReq" type="number" placeholder="600" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:var(--bg-input)"/>
                 </div>
                 <div>
                   <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">최소 WCL</label>
-                  <input v-model="raidForm.wclReq" type="number" placeholder="선택" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:rgba(22,22,42,0.9)"/>
+                  <input v-model="raidForm.wclReq" type="number" placeholder="선택" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:var(--bg-input)"/>
                 </div>
                 <div>
                   <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">지역</label>
-                  <select v-model="raidForm.region" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:rgba(22,22,42,0.9)">
+                  <select v-model="raidForm.region" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:var(--bg-input)">
                     <option>KR</option><option>US</option><option>EU</option>
                   </select>
                 </div>
               </div>
               <div>
                 <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">일정</label>
-                <input v-model="raidForm.schedule" type="text" placeholder="월수금 21:00~24:00" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:rgba(22,22,42,0.9)"/>
+                <input v-model="raidForm.schedule" type="text" placeholder="월수금 21:00~24:00" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:var(--bg-input)"/>
               </div>
               <div>
                 <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">한마디</label>
-                <textarea v-model="raidForm.note" rows="2" placeholder="공대 소개..." class="w-full rounded-2xl border border-rim/60 px-4 py-3 text-sm text-silver placeholder:text-iron resize-none focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:rgba(22,22,42,0.9)"></textarea>
+                <textarea v-model="raidForm.note" rows="2" placeholder="공대 소개..." class="w-full rounded-2xl border border-rim/60 px-4 py-3 text-sm text-silver placeholder:text-iron resize-none focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all" style="background:var(--bg-input)"></textarea>
               </div>
               <div class="flex gap-3 pt-2">
-                <button type="button" class="flex-1 h-11 rounded-full border border-rim/50 text-sm font-semibold text-steel hover:text-silver transition-all" style="background:rgba(22,22,42,0.8)" @click="showModal=false">취소</button>
+                <button type="button" class="flex-1 h-11 rounded-full border border-rim/50 text-sm font-semibold text-steel hover:text-silver transition-all" style="background:var(--bg-button)" @click="showModal=false">취소</button>
                 <button type="button" class="flex-1 h-11 rounded-full text-sm font-semibold text-white transition-all hover:-translate-y-0.5" style="background:#a335ee;box-shadow:0 6px 20px rgba(163,53,238,0.3)" @click="submitRaid">등록하기</button>
               </div>
             </div>
@@ -610,19 +610,19 @@ function submitKey() {
                   <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">닉네임</label>
                   <input v-model="keyForm.player" type="text" placeholder="Playernam"
                     class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all"
-                    style="background:rgba(22,22,42,0.9)"/>
+                    style="background:var(--bg-input)"/>
                 </div>
                 <div>
                   <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">서버</label>
                   <input v-model="keyForm.realm" type="text" placeholder="데스윙"
                     class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all"
-                    style="background:rgba(22,22,42,0.9)"/>
+                    style="background:var(--bg-input)"/>
                 </div>
               </div>
               <div class="grid grid-cols-2 gap-3">
                 <div>
                   <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">던전</label>
-                  <select v-model="keyForm.dungeon" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:rgba(22,22,42,0.9)">
+                  <select v-model="keyForm.dungeon" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:var(--bg-input)">
                     <option v-for="d in DUNGEONS" :key="d">{{ d }}</option>
                   </select>
                 </div>
@@ -630,7 +630,7 @@ function submitKey() {
                   <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">키 레벨</label>
                   <input v-model.number="keyForm.keyLevel" type="number" min="2" max="30" placeholder="10"
                     class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all"
-                    style="background:rgba(22,22,42,0.9)"/>
+                    style="background:var(--bg-input)"/>
                 </div>
               </div>
               <div>
@@ -640,7 +640,7 @@ function submitKey() {
                     type="button"
                     class="h-10 rounded-full border text-xs font-semibold transition-all"
                     :class="keyForm.goal===v?'text-white':'text-steel'"
-                    :style="keyForm.goal===v?`background:${goalColor[v]};border-color:${goalColor[v]}`:'background:rgba(22,22,42,0.8);border-color:rgba(42,42,74,1)'"
+                    :style="keyForm.goal===v?`background:${goalColor[v]};border-color:${goalColor[v]}`:'background:var(--bg-button);border-color:var(--color-rim)'"
                     @click="keyForm.goal=v">{{ l }}</button>
                 </div>
               </div>
@@ -649,40 +649,40 @@ function submitKey() {
                 <div class="grid grid-cols-3 gap-3">
                   <div class="text-center">
                     <div class="text-xs text-wow-rare mb-1">탱커</div>
-                    <input v-model.number="keyForm.tankSlots" type="number" min="0" max="1" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver text-center focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:rgba(22,22,42,0.9)"/>
+                    <input v-model.number="keyForm.tankSlots" type="number" min="0" max="1" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver text-center focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:var(--bg-input)"/>
                   </div>
                   <div class="text-center">
                     <div class="text-xs text-wow-uncommon mb-1">힐러</div>
-                    <input v-model.number="keyForm.healSlots" type="number" min="0" max="1" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver text-center focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:rgba(22,22,42,0.9)"/>
+                    <input v-model.number="keyForm.healSlots" type="number" min="0" max="1" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver text-center focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:var(--bg-input)"/>
                   </div>
                   <div class="text-center">
                     <div class="text-xs mb-1" style="color:#ff4646">딜러</div>
-                    <input v-model.number="keyForm.dpsSlots" type="number" min="0" max="3" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver text-center focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:rgba(22,22,42,0.9)"/>
+                    <input v-model.number="keyForm.dpsSlots" type="number" min="0" max="3" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver text-center focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:var(--bg-input)"/>
                   </div>
                 </div>
               </div>
               <div class="grid grid-cols-3 gap-3">
                 <div>
                   <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">최소 ilvl</label>
-                  <input v-model="keyForm.ilvlReq" type="number" placeholder="600" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:rgba(22,22,42,0.9)"/>
+                  <input v-model="keyForm.ilvlReq" type="number" placeholder="600" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:var(--bg-input)"/>
                 </div>
                 <div>
                   <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">최소 RIO</label>
-                  <input v-model="keyForm.rioReq" type="number" placeholder="선택" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:rgba(22,22,42,0.9)"/>
+                  <input v-model="keyForm.rioReq" type="number" placeholder="선택" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:var(--bg-input)"/>
                 </div>
                 <div>
                   <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">지역</label>
-                  <select v-model="keyForm.region" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:rgba(22,22,42,0.9)">
+                  <select v-model="keyForm.region" class="w-full h-10 rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:var(--bg-input)">
                     <option>KR</option><option>US</option><option>EU</option>
                   </select>
                 </div>
               </div>
               <div>
                 <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">한마디</label>
-                <textarea v-model="keyForm.note" rows="2" placeholder="파티 소개, 요구 조건..." class="w-full rounded-2xl border border-rim/60 px-4 py-3 text-sm text-silver placeholder:text-iron resize-none focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:rgba(22,22,42,0.9)"></textarea>
+                <textarea v-model="keyForm.note" rows="2" placeholder="파티 소개, 요구 조건..." class="w-full rounded-2xl border border-rim/60 px-4 py-3 text-sm text-silver placeholder:text-iron resize-none focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:var(--bg-input)"></textarea>
               </div>
               <div class="flex gap-3 pt-2">
-                <button type="button" class="flex-1 h-11 rounded-full border border-rim/50 text-sm font-semibold text-steel hover:text-silver transition-all" style="background:rgba(22,22,42,0.8)" @click="showModal=false">취소</button>
+                <button type="button" class="flex-1 h-11 rounded-full border border-rim/50 text-sm font-semibold text-steel hover:text-silver transition-all" style="background:var(--bg-button)" @click="showModal=false">취소</button>
                 <button type="button" class="flex-1 h-11 rounded-full text-sm font-semibold text-white transition-all hover:-translate-y-0.5" style="background:#ff8000;box-shadow:0 6px 20px rgba(255,128,0,0.3)" @click="submitKey">등록하기</button>
               </div>
             </div>
@@ -698,7 +698,7 @@ function submitKey() {
                 leave-active-class="transition-all duration-200 ease-in"  leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-2">
       <div v-if="toast"
            class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[200] px-6 py-3 rounded-full border border-rim/60 text-sm font-semibold text-silver shadow-xl pointer-events-none"
-           style="background:rgba(22,22,42,0.95);backdrop-filter:blur(16px)">
+           style="background:var(--bg-button-strong);backdrop-filter:blur(16px)">
         {{ toast }}
       </div>
     </Transition>

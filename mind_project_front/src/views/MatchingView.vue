@@ -123,14 +123,14 @@ onUnmounted(() => {
           to="/raid-rankings"
           class="hidden sm:inline-flex items-center justify-center h-11 px-5 rounded-full border border-rim/60
                  text-sm font-semibold text-steel hover:text-silver hover:border-rim transition-all duration-300"
-          style="background: rgba(22,22,42,0.8); backdrop-filter: blur(8px)">
+          style="background: var(--bg-button); backdrop-filter: blur(8px)">
           순위표 보기
         </RouterLink>
       </div>
 
       <!-- Mode tabs -->
       <div class="flex items-center h-12 p-1 rounded-2xl border border-rim/50 mb-6 w-fit"
-           style="background: rgba(15,15,26,0.8)">
+           style="background: var(--bg-card)">
         <button type="button"
           class="flex items-center gap-2 h-10 px-5 rounded-xl text-sm font-semibold transition-all duration-200"
           :class="mode === 'raid' ? 'text-white' : 'text-steel hover:text-silver'"
@@ -158,8 +158,8 @@ onUnmounted(() => {
       <!-- Matching card -->
       <div class="rounded-[2rem] border overflow-hidden transition-all duration-300"
            :style="mode==='raid'
-             ? 'background:rgba(15,15,26,0.75);backdrop-filter:blur(16px);border-color:rgba(42,42,74,0.5)'
-             : 'background:rgba(15,15,26,0.75);backdrop-filter:blur(16px);border-color:rgba(255,128,0,0.2)'">
+             ? 'background:var(--bg-card-light);backdrop-filter:blur(16px);border-color:var(--bg-dim)'
+             : 'background:var(--bg-card-light);backdrop-filter:blur(16px);border-color:rgba(255,128,0,0.2)'">
 
         <!-- Card header -->
         <div class="px-8 py-6 border-b border-rim/40 flex items-center justify-between">
@@ -184,25 +184,25 @@ onUnmounted(() => {
               <button v-for="size in ['10', '20', '25']" :key="size" type="button"
                 class="h-11 rounded-full border text-sm font-semibold transition-all duration-200"
                 :class="raidSize===size?'border-wow-epic text-white':'border-rim/60 text-steel hover:border-rim hover:text-silver'"
-                :style="raidSize===size?'background:#a335ee':'background:rgba(22,22,42,0.8)'"
+                :style="raidSize===size?'background:#a335ee':'background:var(--bg-button)'"
                 @click="raidSize=size">{{ size }}</button>
             </div>
           </div>
           <div>
             <div class="text-xs font-semibold tracking-widest uppercase text-steel mb-2">Role</div>
-            <select v-model="role" class="h-11 w-full rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all duration-200" style="background:rgba(22,22,42,0.9)">
+            <select v-model="role" class="h-11 w-full rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all duration-200" style="background:var(--bg-input)">
               <option value="DPS">DPS</option><option value="HEAL">HEAL</option><option value="TANK">TANK</option>
             </select>
           </div>
           <div>
             <div class="text-xs font-semibold tracking-widest uppercase text-steel mb-2">Voice</div>
-            <select v-model="voice" class="h-11 w-full rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all duration-200" style="background:rgba(22,22,42,0.9)">
+            <select v-model="voice" class="h-11 w-full rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all duration-200" style="background:var(--bg-input)">
               <option value="no">필요 없음</option><option value="optional">선택</option><option value="required">필수</option>
             </select>
           </div>
           <div>
             <div class="text-xs font-semibold tracking-widest uppercase text-steel mb-2">Region</div>
-            <select v-model="region" class="h-11 w-full rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all duration-200" style="background:rgba(22,22,42,0.9)">
+            <select v-model="region" class="h-11 w-full rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all duration-200" style="background:var(--bg-input)">
               <option value="KR">KR</option><option value="US">US</option><option value="EU">EU</option>
             </select>
           </div>
@@ -219,7 +219,7 @@ onUnmounted(() => {
                 :class="dungeon===d?'text-white':'text-steel hover:text-silver'"
                 :style="dungeon===d
                   ?'background:#ff8000;border-color:#ff8000'
-                  :'background:rgba(22,22,42,0.8);border-color:rgba(42,42,74,0.8)'"
+                  :'background:var(--bg-button);border-color:var(--border-subtle)'"
                 @click="dungeon=d">{{ d }}</button>
             </div>
           </div>
@@ -229,7 +229,7 @@ onUnmounted(() => {
             <div class="flex items-center justify-between mb-3">
               <div class="text-xs font-semibold tracking-widest uppercase text-steel">키 레벨</div>
               <div class="flex items-center gap-1.5 px-3 py-1 rounded-lg text-sm font-bold"
-                   :style="`background:${+keyLevel>=20?'rgba(255,128,0,0.15)':+keyLevel>=15?'rgba(163,53,238,0.15)':+keyLevel>=10?'rgba(0,112,221,0.15)':'rgba(42,42,74,0.5)'};
+                   :style="`background:${+keyLevel>=20?'rgba(255,128,0,0.15)':+keyLevel>=15?'rgba(163,53,238,0.15)':+keyLevel>=10?'rgba(0,112,221,0.15)':'var(--bg-dim)'};
                             color:${+keyLevel>=20?'#ff8000':+keyLevel>=15?'#a335ee':+keyLevel>=10?'#0070dd':'#6b6b8a'}`">
                 <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -247,8 +247,8 @@ onUnmounted(() => {
                 background: linear-gradient(to right,
                   ${+keyLevel>=20?'#ff8000':+keyLevel>=15?'#a335ee':+keyLevel>=10?'#0070dd':'#6b6b8a'} 0%,
                   ${+keyLevel>=20?'#ff8000':+keyLevel>=15?'#a335ee':+keyLevel>=10?'#0070dd':'#6b6b8a'} ${(+keyLevel-2)/23*100}%,
-                  rgba(42,42,74,0.8) ${(+keyLevel-2)/23*100}%,
-                  rgba(42,42,74,0.8) 100%)
+                  var(--border-subtle) ${(+keyLevel-2)/23*100}%,
+                  var(--border-subtle) 100%)
               `"
             />
 
@@ -269,7 +269,7 @@ onUnmounted(() => {
                 :key="v" type="button"
                 class="h-11 rounded-full border text-xs font-semibold transition-all duration-200"
                 :class="keyGoal===v?'text-white':'text-steel hover:text-silver'"
-                :style="keyGoal===v?`background:${c};border-color:${c}`:'background:rgba(22,22,42,0.8);border-color:rgba(42,42,74,0.8)'"
+                :style="keyGoal===v?`background:${c};border-color:${c}`:'background:var(--bg-button);border-color:var(--border-subtle)'"
                 @click="keyGoal=v">{{ l }}</button>
             </div>
           </div>
@@ -277,7 +277,7 @@ onUnmounted(() => {
           <!-- Role -->
           <div>
             <div class="text-xs font-semibold tracking-widest uppercase text-steel mb-2">Role</div>
-            <select v-model="keyRole" class="h-11 w-full rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:rgba(22,22,42,0.9)">
+            <select v-model="keyRole" class="h-11 w-full rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:var(--bg-input)">
               <option value="DPS">DPS</option><option value="HEAL">HEAL</option><option value="TANK">TANK</option>
             </select>
           </div>
@@ -285,7 +285,7 @@ onUnmounted(() => {
           <!-- Region -->
           <div>
             <div class="text-xs font-semibold tracking-widest uppercase text-steel mb-2">Region</div>
-            <select v-model="keyRegion" class="h-11 w-full rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:rgba(22,22,42,0.9)">
+            <select v-model="keyRegion" class="h-11 w-full rounded-full border border-rim/60 px-4 text-sm text-silver focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all" style="background:var(--bg-input)">
               <option value="KR">KR</option><option value="US">US</option><option value="EU">EU</option>
             </select>
           </div>
@@ -301,7 +301,7 @@ onUnmounted(() => {
               ? mode==='raid'
                 ? 'background:#a335ee;box-shadow:0 8px 28px rgba(163,53,238,0.3)'
                 : 'background:#ff8000;box-shadow:0 8px 28px rgba(255,128,0,0.3)'
-              : 'background:rgba(42,42,74,0.5)'"
+              : 'background:var(--bg-dim)'"
             @click="startMatching">
             {{ mode === 'raid' ? '공격대 매칭 시작' : '쐐기 파티 매칭 시작' }}
           </button>
@@ -327,7 +327,7 @@ onUnmounted(() => {
       <div
         v-if="isMatching"
         class="fixed inset-0 z-[100] flex items-center justify-center"
-        style="background: rgba(8,8,16,0.88); backdrop-filter: blur(20px)"
+        style="background: var(--bg-overlay); backdrop-filter: blur(20px)"
         @click.self="!matchFound && cancelMatching()"
       >
         <!-- Dynamic glow -->
@@ -347,7 +347,7 @@ onUnmounted(() => {
         >
           <div v-if="!matchFound"
                class="relative w-full max-w-sm mx-4 rounded-[2rem] border border-rim/50 px-10 py-12 text-center"
-               style="background: rgba(15,15,26,0.95)">
+               style="background: var(--bg-card-opaque)">
 
             <div class="relative flex items-center justify-center mb-8 mx-auto w-24 h-24">
               <svg class="absolute inset-0 w-full h-full animate-spin" style="animation-duration:3s" viewBox="0 0 96 96" fill="none">
@@ -384,7 +384,7 @@ onUnmounted(() => {
               <span class="px-3 py-1 rounded-full text-xs font-semibold text-wow-rare border border-wow-rare/30"
                     style="background:rgba(0,112,221,0.1)">{{ roleLabel }}</span>
               <span class="px-3 py-1 rounded-full text-xs font-semibold text-steel border border-rim/40"
-                    style="background:rgba(22,22,42,0.8)">
+                    style="background:var(--bg-button)">
                 {{ mode==='raid' ? region : keyRegion }}
               </span>
             </div>
@@ -392,7 +392,7 @@ onUnmounted(() => {
             <button type="button"
               class="w-full h-11 rounded-full border border-rim/50 text-sm font-semibold text-steel
                      hover:text-silver hover:border-rim transition-all duration-200"
-              style="background:rgba(22,22,42,0.8)"
+              style="background:var(--bg-button)"
               @click="cancelMatching">
               취소 (ESC)
             </button>
@@ -407,7 +407,7 @@ onUnmounted(() => {
         >
           <div v-if="matchFound && matchedData"
                class="relative w-full max-w-md mx-4 rounded-[2rem] border overflow-hidden"
-               style="background:rgba(8,16,12,0.97);border-color:rgba(30,255,0,0.25)">
+               style="background:var(--bg-match-card);border-color:rgba(30,255,0,0.25)">
 
             <!-- Top green accent bar -->
             <div class="h-1 w-full" style="background:linear-gradient(90deg,#1eff00,#00c8ff,#1eff00)"></div>
@@ -440,7 +440,7 @@ onUnmounted(() => {
               <div class="space-y-2 mb-6">
                 <div v-for="(member, i) in matchedData.party" :key="i"
                      class="flex items-center gap-3 px-4 py-3 rounded-2xl border border-rim/30"
-                     style="background:rgba(15,22,15,0.8)">
+                     style="background:var(--bg-match-member)">
                   <!-- Role icon -->
                   <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
                        :style="`background:${member.role==='탱커'?'rgba(255,128,0,0.15)':member.role==='힐러'?'rgba(30,255,0,0.15)':'rgba(0,112,221,0.15)'}`">
@@ -477,7 +477,7 @@ onUnmounted(() => {
               <button type="button"
                 class="w-full h-11 rounded-full border border-rim/50 text-sm font-semibold text-steel
                        hover:text-silver hover:border-rim transition-all duration-200"
-                style="background:rgba(22,22,42,0.8)"
+                style="background:var(--bg-button)"
                 @click="cancelMatching">
                 닫기
               </button>

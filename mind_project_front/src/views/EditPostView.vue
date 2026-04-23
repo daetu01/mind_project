@@ -99,18 +99,18 @@ function cancel() {
       <!-- No post found -->
       <div v-if="!original"
            class="rounded-[2rem] border border-rim/50 p-12 text-center"
-           style="background:rgba(15,15,26,0.8)">
+           style="background:var(--bg-card)">
         <div class="text-steel text-sm mb-4">수정할 게시글 데이터를 찾을 수 없습니다.</div>
         <button type="button"
           class="h-10 px-5 rounded-full text-sm font-semibold text-steel border border-rim/60 hover:text-silver transition-all"
-          style="background:rgba(22,22,42,0.8)"
+          style="background:var(--bg-button)"
           @click="cancel">공대 모집 목록으로</button>
       </div>
 
       <!-- ── RAID EDIT FORM ────────────────────────────── -->
       <div v-else-if="postType==='raid'"
            class="rounded-[2rem] border border-rim/50 overflow-hidden"
-           style="background:rgba(15,15,26,0.85);backdrop-filter:blur(16px)">
+           style="background:var(--bg-card-strong);backdrop-filter:blur(16px)">
 
         <div class="px-8 py-5 border-b border-rim/40 flex items-center gap-3">
           <div class="w-2 h-2 rounded-full" style="background:#a335ee"></div>
@@ -125,14 +125,14 @@ function cancel() {
               <input v-model="raidForm.guild" type="text" placeholder="어둠의 파수꾼"
                 class="w-full h-11 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron
                        focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all"
-                style="background:rgba(22,22,42,0.9)"/>
+                style="background:var(--bg-input)"/>
             </div>
             <div>
               <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">서버</label>
               <input v-model="raidForm.realm" type="text" placeholder="데스윙"
                 class="w-full h-11 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron
                        focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all"
-                style="background:rgba(22,22,42,0.9)"/>
+                style="background:var(--bg-input)"/>
             </div>
           </div>
 
@@ -143,7 +143,7 @@ function cancel() {
               <select v-model="raidForm.raid"
                 class="w-full h-11 rounded-full border border-rim/60 px-4 text-sm text-silver
                        focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all"
-                style="background:rgba(22,22,42,0.9)">
+                style="background:var(--bg-input)">
                 <option>네루바르 궁전</option>
                 <option>아문 타울 니루프</option>
               </select>
@@ -155,7 +155,7 @@ function cancel() {
                   class="flex-1 h-11 rounded-full border text-xs font-semibold transition-all"
                   :style="raidForm.difficulty===d
                     ?'background:#a335ee;border-color:#a335ee;color:#fff'
-                    :'background:rgba(22,22,42,0.8);border-color:rgba(42,42,74,0.8);color:#6b6b8a'"
+                    :'background:var(--bg-button);border-color:var(--border-subtle);color:#6b6b8a'"
                   @click="raidForm.difficulty=d">{{ d[0] }}</button>
               </div>
             </div>
@@ -168,7 +168,7 @@ function cancel() {
               <input v-model="raidForm.progress" type="text" placeholder="9/9"
                 class="w-full h-11 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron
                        focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all"
-                style="background:rgba(22,22,42,0.9)"/>
+                style="background:var(--bg-input)"/>
             </div>
             <div>
               <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">모집 인원</label>
@@ -178,21 +178,21 @@ function cancel() {
                   <input v-model.number="raidForm.tankSlots" type="number" min="0" max="5"
                     class="w-full h-11 rounded-xl border border-rim/60 px-2 text-sm text-silver text-center
                            focus:outline-none transition-all"
-                    style="background:rgba(22,22,42,0.9)"/>
+                    style="background:var(--bg-input)"/>
                 </div>
                 <div>
                   <div class="text-[10px] text-steel mb-1 text-center">힐러</div>
                   <input v-model.number="raidForm.healSlots" type="number" min="0" max="10"
                     class="w-full h-11 rounded-xl border border-rim/60 px-2 text-sm text-silver text-center
                            focus:outline-none transition-all"
-                    style="background:rgba(22,22,42,0.9)"/>
+                    style="background:var(--bg-input)"/>
                 </div>
                 <div>
                   <div class="text-[10px] text-steel mb-1 text-center">딜러</div>
                   <input v-model.number="raidForm.dpsSlots" type="number" min="0" max="20"
                     class="w-full h-11 rounded-xl border border-rim/60 px-2 text-sm text-silver text-center
                            focus:outline-none transition-all"
-                    style="background:rgba(22,22,42,0.9)"/>
+                    style="background:var(--bg-input)"/>
                 </div>
               </div>
             </div>
@@ -205,21 +205,21 @@ function cancel() {
               <input v-model.number="raidForm.ilvlReq" type="number" placeholder="619"
                 class="w-full h-11 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron
                        focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all"
-                style="background:rgba(22,22,42,0.9)"/>
+                style="background:var(--bg-input)"/>
             </div>
             <div>
               <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">WCL 점수</label>
               <input v-model.number="raidForm.wclReq" type="number" placeholder="75"
                 class="w-full h-11 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron
                        focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all"
-                style="background:rgba(22,22,42,0.9)"/>
+                style="background:var(--bg-input)"/>
             </div>
             <div>
               <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">지역</label>
               <select v-model="raidForm.region"
                 class="w-full h-11 rounded-full border border-rim/60 px-4 text-sm text-silver
                        focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all"
-                style="background:rgba(22,22,42,0.9)">
+                style="background:var(--bg-input)">
                 <option>KR</option><option>US</option><option>EU</option>
               </select>
             </div>
@@ -232,14 +232,14 @@ function cancel() {
               <input v-model="raidForm.schedule" type="text" placeholder="월수금 21:00~24:00"
                 class="w-full h-11 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron
                        focus:outline-none focus:ring-2 focus:ring-wow-epic/40 transition-all"
-                style="background:rgba(22,22,42,0.9)"/>
+                style="background:var(--bg-input)"/>
             </div>
             <div class="flex items-end pb-0.5">
               <label class="flex items-center gap-3 cursor-pointer">
                 <div class="relative">
                   <input v-model="raidForm.voice" type="checkbox" class="sr-only"/>
                   <div class="w-10 h-6 rounded-full transition-all duration-200"
-                       :style="raidForm.voice?'background:#a335ee':'background:rgba(42,42,74,0.8)'"></div>
+                       :style="raidForm.voice?'background:#a335ee':'background:var(--border-subtle)'"></div>
                   <div class="absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-all duration-200"
                        :style="raidForm.voice?'left:22px':'left:4px'"></div>
                 </div>
@@ -254,7 +254,7 @@ function cancel() {
             <textarea v-model="raidForm.note" rows="3" placeholder="공대 설명, 요구 사항, 분위기 등..."
               class="w-full rounded-2xl border border-rim/60 px-4 py-3 text-sm text-silver placeholder:text-iron
                      focus:outline-none focus:ring-2 focus:ring-wow-epic/40 resize-none transition-all"
-              style="background:rgba(22,22,42,0.9)"></textarea>
+              style="background:var(--bg-input)"></textarea>
           </div>
         </div>
 
@@ -274,7 +274,7 @@ function cancel() {
           </button>
           <button type="button"
             class="h-12 px-6 rounded-full border border-rim/60 text-sm font-semibold text-steel hover:text-silver hover:border-rim transition-all"
-            style="background:rgba(22,22,42,0.8)"
+            style="background:var(--bg-button)"
             @click="cancel">
             취소
           </button>
@@ -284,7 +284,7 @@ function cancel() {
       <!-- ── KEYSTONE EDIT FORM ──────────────────────────── -->
       <div v-else
            class="rounded-[2rem] border overflow-hidden"
-           style="background:rgba(15,15,26,0.85);backdrop-filter:blur(16px);border-color:rgba(255,128,0,0.2)">
+           style="background:var(--bg-card-strong);backdrop-filter:blur(16px);border-color:rgba(255,128,0,0.2)">
 
         <div class="px-8 py-5 border-b border-rim/40 flex items-center gap-3">
           <div class="w-2 h-2 rounded-full" style="background:#ff8000"></div>
@@ -301,14 +301,14 @@ function cancel() {
               <input v-model="keyForm.player" type="text" placeholder="Frostmourne"
                 class="w-full h-11 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron
                        focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all"
-                style="background:rgba(22,22,42,0.9)"/>
+                style="background:var(--bg-input)"/>
             </div>
             <div>
               <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">서버</label>
               <input v-model="keyForm.realm" type="text" placeholder="데스윙"
                 class="w-full h-11 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron
                        focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all"
-                style="background:rgba(22,22,42,0.9)"/>
+                style="background:var(--bg-input)"/>
             </div>
           </div>
 
@@ -320,7 +320,7 @@ function cancel() {
                 class="h-10 rounded-xl border text-xs font-semibold transition-all px-2 text-center"
                 :style="keyForm.dungeon===d
                   ?'background:#ff8000;border-color:#ff8000;color:#fff'
-                  :'background:rgba(22,22,42,0.8);border-color:rgba(42,42,74,0.8);color:#6b6b8a'"
+                  :'background:var(--bg-button);border-color:var(--border-subtle);color:#6b6b8a'"
                 @click="keyForm.dungeon=d">{{ d }}</button>
             </div>
           </div>
@@ -330,7 +330,7 @@ function cancel() {
             <div class="flex items-center justify-between mb-3">
               <label class="text-xs font-semibold tracking-widest uppercase text-steel">키 레벨</label>
               <div class="flex items-center gap-1.5 px-3 py-1 rounded-lg text-sm font-bold"
-                   :style="`background:${+keyForm.keyLevel>=20?'rgba(255,128,0,0.15)':+keyForm.keyLevel>=15?'rgba(163,53,238,0.15)':+keyForm.keyLevel>=10?'rgba(0,112,221,0.15)':'rgba(42,42,74,0.5)'};
+                   :style="`background:${+keyForm.keyLevel>=20?'rgba(255,128,0,0.15)':+keyForm.keyLevel>=15?'rgba(163,53,238,0.15)':+keyForm.keyLevel>=10?'rgba(0,112,221,0.15)':'var(--bg-dim)'};
                             color:${keyColor(+keyForm.keyLevel)}`">
                 <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -341,7 +341,7 @@ function cancel() {
             </div>
             <input v-model.number="keyForm.keyLevel" type="range" min="2" max="25" step="1"
               class="key-slider w-full h-2 rounded-full appearance-none cursor-pointer"
-              :style="`background:linear-gradient(to right,${keyColor(+keyForm.keyLevel)} 0%,${keyColor(+keyForm.keyLevel)} ${keyPct}%,rgba(42,42,74,0.8) ${keyPct}%,rgba(42,42,74,0.8) 100%)`"/>
+              :style="`background:linear-gradient(to right,${keyColor(+keyForm.keyLevel)} 0%,${keyColor(+keyForm.keyLevel)} ${keyPct}%,var(--border-subtle) ${keyPct}%,var(--border-subtle) 100%)`"/>
             <div class="flex justify-between text-[10px] text-iron mt-1.5 px-0.5">
               <span>+2</span>
               <span class="text-steel">+10</span>
@@ -360,21 +360,21 @@ function cancel() {
                 <input v-model.number="keyForm.tankSlots" type="number" min="0" max="1"
                   class="w-full h-11 rounded-xl border border-rim/60 px-2 text-sm text-silver text-center
                          focus:outline-none transition-all"
-                  style="background:rgba(22,22,42,0.9)"/>
+                  style="background:var(--bg-input)"/>
               </div>
               <div>
                 <div class="text-[10px] text-steel mb-1 text-center">힐러</div>
                 <input v-model.number="keyForm.healSlots" type="number" min="0" max="1"
                   class="w-full h-11 rounded-xl border border-rim/60 px-2 text-sm text-silver text-center
                          focus:outline-none transition-all"
-                  style="background:rgba(22,22,42,0.9)"/>
+                  style="background:var(--bg-input)"/>
               </div>
               <div>
                 <div class="text-[10px] text-steel mb-1 text-center">딜러</div>
                 <input v-model.number="keyForm.dpsSlots" type="number" min="0" max="3"
                   class="w-full h-11 rounded-xl border border-rim/60 px-2 text-sm text-silver text-center
                          focus:outline-none transition-all"
-                  style="background:rgba(22,22,42,0.9)"/>
+                  style="background:var(--bg-input)"/>
               </div>
             </div>
           </div>
@@ -386,21 +386,21 @@ function cancel() {
               <input v-model.number="keyForm.rioReq" type="number" placeholder="2800"
                 class="w-full h-11 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron
                        focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all"
-                style="background:rgba(22,22,42,0.9)"/>
+                style="background:var(--bg-input)"/>
             </div>
             <div>
               <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">최소 아이템 레벨</label>
               <input v-model.number="keyForm.ilvlReq" type="number" placeholder="636"
                 class="w-full h-11 rounded-full border border-rim/60 px-4 text-sm text-silver placeholder:text-iron
                        focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all"
-                style="background:rgba(22,22,42,0.9)"/>
+                style="background:var(--bg-input)"/>
             </div>
             <div>
               <label class="text-xs font-semibold tracking-widest uppercase text-steel mb-2 block">지역</label>
               <select v-model="keyForm.region"
                 class="w-full h-11 rounded-full border border-rim/60 px-4 text-sm text-silver
                        focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 transition-all"
-                style="background:rgba(22,22,42,0.9)">
+                style="background:var(--bg-input)">
                 <option>KR</option><option>US</option><option>EU</option>
               </select>
             </div>
@@ -415,7 +415,7 @@ function cancel() {
                   :key="v" type="button"
                   class="h-11 rounded-full border text-xs font-semibold transition-all"
                   :style="keyForm.goal===v?`background:${c};border-color:${c};color:#fff`
-                    :'background:rgba(22,22,42,0.8);border-color:rgba(42,42,74,0.8);color:#6b6b8a'"
+                    :'background:var(--bg-button);border-color:var(--border-subtle);color:#6b6b8a'"
                   @click="keyForm.goal=v">{{ l }}</button>
               </div>
             </div>
@@ -424,7 +424,7 @@ function cancel() {
                 <div class="relative">
                   <input v-model="keyForm.voice" type="checkbox" class="sr-only"/>
                   <div class="w-10 h-6 rounded-full transition-all duration-200"
-                       :style="keyForm.voice?'background:#ff8000':'background:rgba(42,42,74,0.8)'"></div>
+                       :style="keyForm.voice?'background:#ff8000':'background:var(--border-subtle)'"></div>
                   <div class="absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-all duration-200"
                        :style="keyForm.voice?'left:22px':'left:4px'"></div>
                 </div>
@@ -439,7 +439,7 @@ function cancel() {
             <textarea v-model="keyForm.note" rows="3" placeholder="던전 설명, 요구 사항..."
               class="w-full rounded-2xl border border-rim/60 px-4 py-3 text-sm text-silver placeholder:text-iron
                      focus:outline-none focus:ring-2 focus:ring-wow-legendary/40 resize-none transition-all"
-              style="background:rgba(22,22,42,0.9)"></textarea>
+              style="background:var(--bg-input)"></textarea>
           </div>
         </div>
 
@@ -459,7 +459,7 @@ function cancel() {
           </button>
           <button type="button"
             class="h-12 px-6 rounded-full border border-rim/60 text-sm font-semibold text-steel hover:text-silver hover:border-rim transition-all"
-            style="background:rgba(22,22,42,0.8)"
+            style="background:var(--bg-button)"
             @click="cancel">
             취소
           </button>

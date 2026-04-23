@@ -11,7 +11,7 @@
 
       <!-- Epic status badge -->
       <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-rim/60 mb-10 text-xs font-medium text-steel tracking-wider uppercase"
-           style="background: rgba(15,15,26,0.8)">
+           style="background: var(--bg-card)">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-wow-epic opacity-60"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-wow-epic"></span>

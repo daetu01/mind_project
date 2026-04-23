@@ -20,7 +20,7 @@
 
       <!-- Server status -->
       <div class="mt-16 inline-flex items-center gap-3 px-6 py-3 rounded-full border border-rim/50"
-           style="background: rgba(15,15,26,0.8)">
+           style="background: var(--bg-card)">
         <span class="relative flex h-2.5 w-2.5">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-wow-uncommon opacity-60"></span>
           <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-wow-uncommon"></span>

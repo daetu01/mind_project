@@ -55,6 +55,54 @@
   ::-webkit-scrollbar-thumb:hover { background: var(--color-wow-epic); }
 }
 
+/* ── Transparent surface tokens (dark defaults) ─────── */
+:root {
+  --bg-card:          rgba(15,15,26,0.8);
+  --bg-card-light:    rgba(15,15,26,0.75);
+  --bg-card-strong:   rgba(15,15,26,0.85);
+  --bg-card-opaque:   rgba(15,15,26,0.97);
+  --bg-card-faint:    rgba(15,15,26,0.7);
+  --bg-input:         rgba(22,22,42,0.9);
+  --bg-button:        rgba(22,22,42,0.8);
+  --bg-button-dim:    rgba(22,22,42,0.6);
+  --bg-button-strong: rgba(22,22,42,0.95);
+  --bg-header:        rgba(8,8,16,0.5);
+  --bg-overlay:       rgba(8,8,16,0.88);
+  --bg-bar-track:     rgba(42,42,74,0.6);
+  --bg-dim:           rgba(42,42,74,0.4);
+  --border-subtle:    rgba(42,42,74,0.8);
+  --bg-match-card:    rgba(8,16,12,0.97);
+  --bg-match-member:  rgba(15,22,15,0.8);
+}
+
+/* ── Light Mode Overrides ────────────────────────────── */
+html.light {
+  --color-night:    #ffffff;
+  --color-obsidian: #f4f4f8;
+  --color-shadow:   #ebebf2;
+  --color-dusk:     #dfdff0;
+  --color-rim:      #c4c4dc;
+  --color-silver:   #12121f;
+  --color-steel:    #6b6b8a;
+  --color-iron:     #9090b0;
+  --bg-card:          rgba(244,244,248,0.85);
+  --bg-card-light:    rgba(244,244,248,0.8);
+  --bg-card-strong:   rgba(244,244,248,0.92);
+  --bg-card-opaque:   rgba(255,255,255,0.97);
+  --bg-card-faint:    rgba(244,244,248,0.75);
+  --bg-input:         rgba(255,255,255,0.92);
+  --bg-button:        rgba(235,235,242,0.85);
+  --bg-button-dim:    rgba(235,235,242,0.8);
+  --bg-button-strong: rgba(255,255,255,0.95);
+  --bg-header:        rgba(235,235,242,0.8);
+  --bg-overlay:       rgba(0,0,0,0.6);
+  --bg-bar-track:     rgba(196,196,220,0.6);
+  --bg-dim:           rgba(196,196,220,0.4);
+  --border-subtle:    rgba(196,196,220,0.8);
+  --bg-match-card:    rgba(240,255,245,0.97);
+  --bg-match-member:  rgba(235,252,242,0.9);
+}
+
 /* Dark option/select fallback */
 @layer utilities {
   option {

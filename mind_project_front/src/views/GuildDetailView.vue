@@ -71,7 +71,7 @@ const totalBosses  = computed(() => guild.value.bosses.length)
 
       <!-- Demo banner -->
       <div class="flex items-center gap-3 px-5 py-3 rounded-2xl border border-rim/50 mb-6 text-xs text-steel"
-           style="background: rgba(22,22,42,0.6)">
+           style="background: var(--bg-button-dim)">
         <svg class="w-4 h-4 flex-shrink-0 text-wow-legendary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>
@@ -80,7 +80,7 @@ const totalBosses  = computed(() => guild.value.bosses.length)
 
       <!-- ── Guild hero card ─────────────────────────── -->
       <div class="rounded-[2rem] border border-rim/50 overflow-hidden mb-6"
-           style="background: rgba(15,15,26,0.85)">
+           style="background: var(--bg-card-strong)">
         <div class="h-1 w-full" style="background: linear-gradient(90deg, #ff8000, #a335ee, transparent)"></div>
 
         <div class="p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6">
@@ -108,7 +108,7 @@ const totalBosses  = computed(() => guild.value.bosses.length)
             </div>
             <div class="flex flex-wrap gap-2">
               <span class="px-3 py-1 rounded-full text-xs font-semibold border border-rim/50 text-steel"
-                    style="background: rgba(22,22,42,0.8)">
+                    style="background: var(--bg-button)">
                 🏆 {{ guild.rank }}위
               </span>
               <span class="px-3 py-1 rounded-full text-xs font-semibold"
@@ -116,11 +116,11 @@ const totalBosses  = computed(() => guild.value.bosses.length)
                 {{ guild.score.toLocaleString() }}점
               </span>
               <span class="px-3 py-1 rounded-full text-xs font-semibold border border-rim/50 text-steel"
-                    style="background: rgba(22,22,42,0.8)">
+                    style="background: var(--bg-button)">
                 {{ guild.memberCount }}명
               </span>
               <span class="px-3 py-1 rounded-full text-xs font-semibold border border-rim/50 text-steel"
-                    style="background: rgba(22,22,42,0.8)">
+                    style="background: var(--bg-button)">
                 {{ guild.raidSchedule }}
               </span>
             </div>
@@ -141,7 +141,7 @@ const totalBosses  = computed(() => guild.value.bosses.length)
 
         <!-- ── Boss table ────────────────────────────── -->
         <div class="lg:col-span-2 rounded-[2rem] border border-rim/50 overflow-hidden"
-             style="background: rgba(15,15,26,0.8)">
+             style="background: var(--bg-card)">
 
           <div class="px-6 py-4 border-b border-rim/40">
             <div class="text-sm font-semibold text-silver">보스 진행도</div>
@@ -152,7 +152,7 @@ const totalBosses  = computed(() => guild.value.bosses.length)
             <table class="min-w-full text-left">
               <thead>
                 <tr class="text-xs uppercase tracking-widest text-iron border-b border-rim/30"
-                    style="background: rgba(8,8,16,0.5)">
+                    style="background: var(--bg-header)">
                   <th class="px-5 py-3 font-semibold w-8">#</th>
                   <th class="px-5 py-3 font-semibold">보스</th>
                   <th class="px-5 py-3 font-semibold text-right">베스트</th>
@@ -174,7 +174,7 @@ const totalBosses  = computed(() => guild.value.bosses.length)
                       <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
                             :style="boss.cleared
                               ? 'background:rgba(30,255,0,0.12)'
-                              : 'background:rgba(42,42,74,0.5)'">
+                              : 'background:var(--bg-dim)'">
                         <svg v-if="boss.cleared" class="w-3 h-3" style="color:#1eff00"
                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
@@ -228,7 +228,7 @@ const totalBosses  = computed(() => guild.value.bosses.length)
 
           <!-- Role breakdown -->
           <div class="rounded-[1.5rem] border border-rim/50 p-6"
-               style="background: rgba(15,15,26,0.8)">
+               style="background: var(--bg-card)">
             <div class="text-sm font-semibold text-silver mb-5">공대 구성</div>
             <div class="flex flex-col gap-3">
               <div v-for="[label, val, color, bg] in [
@@ -240,7 +240,7 @@ const totalBosses  = computed(() => guild.value.bosses.length)
                   <span class="text-xs font-semibold text-steel">{{ label }}</span>
                   <span class="text-xs font-bold" :style="`color:${color}`">{{ val }}명</span>
                 </div>
-                <div class="h-1.5 rounded-full overflow-hidden" style="background: rgba(42,42,74,0.6)">
+                <div class="h-1.5 rounded-full overflow-hidden" style="background: var(--bg-bar-track)">
                   <div class="h-full rounded-full"
                        :style="`width:${Math.round(val/guild.memberCount*100)}%; background:${color}`"></div>
                 </div>
@@ -250,7 +250,7 @@ const totalBosses  = computed(() => guild.value.bosses.length)
 
           <!-- Class distribution -->
           <div class="rounded-[1.5rem] border border-rim/50 p-6 flex-1"
-               style="background: rgba(15,15,26,0.8)">
+               style="background: var(--bg-card)">
             <div class="text-sm font-semibold text-silver mb-5">클래스 분포</div>
             <div class="flex flex-col gap-2.5">
               <div v-for="cls in guild.composition.classes" :key="cls.name"
@@ -261,7 +261,7 @@ const totalBosses  = computed(() => guild.value.bosses.length)
                 <span class="text-xs text-steel flex-1 truncate">{{ cls.name }}</span>
                 <!-- Count bar -->
                 <div class="flex items-center gap-1.5">
-                  <div class="w-16 h-1 rounded-full overflow-hidden" style="background: rgba(42,42,74,0.6)">
+                  <div class="w-16 h-1 rounded-full overflow-hidden" style="background: var(--bg-bar-track)">
                     <div class="h-full rounded-full"
                          :style="`width:${Math.round(cls.count/guild.memberCount*100)}%; background:${cls.color}`"></div>
                   </div>

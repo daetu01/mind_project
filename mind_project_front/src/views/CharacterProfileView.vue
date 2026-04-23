@@ -110,7 +110,7 @@ const diffBg    = { Normal: 'rgba(30,255,0,0.1)', Heroic: 'rgba(0,112,221,0.1)',
 
       <!-- Demo banner -->
       <div class="flex items-center gap-3 px-5 py-3 rounded-2xl border border-rim/50 mb-8 text-xs text-steel"
-           style="background: rgba(22,22,42,0.6)">
+           style="background: var(--bg-button-dim)">
         <svg class="w-4 h-4 flex-shrink-0 text-wow-legendary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>
@@ -122,7 +122,7 @@ const diffBg    = { Normal: 'rgba(30,255,0,0.1)', Heroic: 'rgba(0,112,221,0.1)',
 
       <!-- ── Profile hero card ──────────────────────── -->
       <div class="rounded-[2rem] border border-rim/50 overflow-hidden mb-6"
-           style="background: rgba(15,15,26,0.85)">
+           style="background: var(--bg-card-strong)">
 
         <!-- Class color accent bar -->
         <div class="h-1 w-full" :style="`background: linear-gradient(90deg, ${classColor}, transparent)`"></div>
@@ -164,7 +164,7 @@ const diffBg    = { Normal: 'rgba(30,255,0,0.1)', Heroic: 'rgba(0,112,221,0.1)',
                 {{ character.role }}
               </span>
               <span class="px-2.5 py-1 rounded-full text-xs font-semibold border border-rim/50 text-steel"
-                    style="background: rgba(22,22,42,0.8)">
+                    style="background: var(--bg-button)">
                 ilvl {{ character.ilvl }}
               </span>
             </div>
@@ -180,7 +180,7 @@ const diffBg    = { Normal: 'rgba(30,255,0,0.1)', Heroic: 'rgba(0,112,221,0.1)',
             <RouterLink to="/lfg"
               class="flex items-center justify-center h-10 px-5 rounded-full text-sm font-semibold text-steel border border-rim/60
                      hover:text-silver hover:border-rim transition-all"
-              style="background: rgba(22,22,42,0.8)">
+              style="background: var(--bg-button)">
               공대 찾기
             </RouterLink>
           </div>
@@ -192,7 +192,7 @@ const diffBg    = { Normal: 'rgba(30,255,0,0.1)', Heroic: 'rgba(0,112,221,0.1)',
 
         <!-- ilvl -->
         <div class="rounded-2xl border border-rim/50 p-5 text-center"
-             style="background: rgba(15,15,26,0.8)">
+             style="background: var(--bg-card)">
           <div class="text-xs font-semibold tracking-widest uppercase text-iron mb-2">아이템 레벨</div>
           <div class="text-3xl font-bold text-silver">{{ character.ilvl }}</div>
           <div class="text-xs text-steel mt-1">Season Average</div>
@@ -200,7 +200,7 @@ const diffBg    = { Normal: 'rgba(30,255,0,0.1)', Heroic: 'rgba(0,112,221,0.1)',
 
         <!-- WCL Score -->
         <div class="rounded-2xl border p-5 text-center"
-             :style="`background: rgba(15,15,26,0.8); border-color: ${wclColor(character.wclScore)}22`">
+             :style="`background: var(--bg-card); border-color: ${wclColor(character.wclScore)}22`">
           <div class="text-xs font-semibold tracking-widest uppercase text-iron mb-2">WCL 점수</div>
           <div class="text-3xl font-bold" :style="`color: ${wclColor(character.wclScore)}`">
             {{ character.wclScore.toFixed(1) }}
@@ -212,7 +212,7 @@ const diffBg    = { Normal: 'rgba(30,255,0,0.1)', Heroic: 'rgba(0,112,221,0.1)',
 
         <!-- RIO Score -->
         <div class="rounded-2xl border p-5 text-center"
-             :style="`background: rgba(15,15,26,0.8); border-color: ${rioColor(character.rioScore)}22`">
+             :style="`background: var(--bg-card); border-color: ${rioColor(character.rioScore)}22`">
           <div class="text-xs font-semibold tracking-widest uppercase text-iron mb-2">RIO 점수</div>
           <div class="text-3xl font-bold" :style="`color: ${rioColor(character.rioScore)}`">
             {{ character.rioScore.toLocaleString() }}
@@ -224,7 +224,7 @@ const diffBg    = { Normal: 'rgba(30,255,0,0.1)', Heroic: 'rgba(0,112,221,0.1)',
 
         <!-- Role -->
         <div class="rounded-2xl border border-rim/50 p-5 text-center"
-             style="background: rgba(15,15,26,0.8)">
+             style="background: var(--bg-card)">
           <div class="text-xs font-semibold tracking-widest uppercase text-iron mb-2">역할</div>
           <div class="text-3xl font-bold" :style="`color: ${classColor}`">
             {{ character.role }}
@@ -234,7 +234,7 @@ const diffBg    = { Normal: 'rgba(30,255,0,0.1)', Heroic: 'rgba(0,112,221,0.1)',
 
         <!-- Achievements -->
         <div class="rounded-2xl border border-rim/50 p-5 text-center"
-             style="background: rgba(15,15,26,0.8)">
+             style="background: var(--bg-card)">
           <div class="text-xs font-semibold tracking-widest uppercase text-iron mb-2">업적 점수</div>
           <div class="text-3xl font-bold text-silver">
             {{ character.achievementPoints.toLocaleString() }}
@@ -246,7 +246,7 @@ const diffBg    = { Normal: 'rgba(30,255,0,0.1)', Heroic: 'rgba(0,112,221,0.1)',
 
       <!-- ── Raid history ────────────────────────────── -->
       <div class="rounded-[2rem] border border-rim/50 overflow-hidden"
-           style="background: rgba(15,15,26,0.8)">
+           style="background: var(--bg-card)">
 
         <div class="px-6 py-4 border-b border-rim/40">
           <div class="text-sm font-semibold text-silver">레이드 기록</div>
@@ -257,7 +257,7 @@ const diffBg    = { Normal: 'rgba(30,255,0,0.1)', Heroic: 'rgba(0,112,221,0.1)',
           <table class="min-w-full text-left">
             <thead>
               <tr class="text-xs uppercase tracking-widest text-iron border-b border-rim/30"
-                  style="background: rgba(8,8,16,0.5)">
+                  style="background: var(--bg-header)">
                 <th class="px-6 py-3 font-semibold">레이드</th>
                 <th class="px-6 py-3 font-semibold">난이도</th>
                 <th class="px-6 py-3 font-semibold">진행도</th>
@@ -319,7 +319,7 @@ const diffBg    = { Normal: 'rgba(30,255,0,0.1)', Heroic: 'rgba(0,112,221,0.1)',
 
       <!-- ── M+ 기록 ────────────────────────────────── -->
       <div class="rounded-[2rem] border border-rim/50 overflow-hidden mt-6"
-           style="background: rgba(15,15,26,0.8)">
+           style="background: var(--bg-card)">
         <div class="px-6 py-4 border-b border-rim/40 flex items-center justify-between">
           <div>
             <div class="flex items-center gap-2">
@@ -344,7 +344,7 @@ const diffBg    = { Normal: 'rgba(30,255,0,0.1)', Heroic: 'rgba(0,112,221,0.1)',
           <table class="min-w-full text-left">
             <thead>
               <tr class="text-xs uppercase tracking-widest text-iron border-b border-rim/30"
-                  style="background: rgba(8,8,16,0.5)">
+                  style="background: var(--bg-header)">
                 <th class="px-6 py-3 font-semibold">던전</th>
                 <th class="px-6 py-3 font-semibold text-center">최고 키</th>
                 <th class="px-6 py-3 font-semibold text-center">타이머</th>

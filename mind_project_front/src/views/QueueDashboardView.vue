@@ -84,7 +84,7 @@ function ageLabel(age) {
         </div>
         <!-- Status badge -->
         <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-rim/50 text-xs font-medium text-steel"
-             style="background: rgba(15,15,26,0.8)">
+             style="background: var(--bg-card)">
           <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-wow-uncommon opacity-60"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-wow-uncommon"></span>
@@ -98,7 +98,7 @@ function ageLabel(age) {
 
         <!-- Total -->
         <div class="md:col-span-1 rounded-2xl border border-rim/50 p-5 text-center relative overflow-hidden"
-             style="background: rgba(15,15,26,0.85)">
+             style="background: var(--bg-card-strong)">
           <div class="absolute inset-0 pointer-events-none"
                style="background: radial-gradient(ellipse at 50% 0%, rgba(163,53,238,0.06), transparent 70%)"></div>
           <div class="text-xs font-semibold tracking-widest uppercase text-iron mb-2">대기 중</div>
@@ -111,7 +111,7 @@ function ageLabel(age) {
 
         <!-- Today's matches -->
         <div class="rounded-2xl border border-rim/50 p-5 text-center"
-             style="background: rgba(15,15,26,0.85)">
+             style="background: var(--bg-card-strong)">
           <div class="text-xs font-semibold tracking-widest uppercase text-iron mb-2">오늘 매칭</div>
           <div class="text-5xl font-bold tabular-nums transition-colors duration-300"
                :class="flash === 'today' ? 'text-wow-legendary' : 'text-silver'"
@@ -123,7 +123,7 @@ function ageLabel(age) {
 
         <!-- Tank avg wait -->
         <div class="rounded-2xl border border-rim/50 p-5 text-center"
-             style="background: rgba(15,15,26,0.85)">
+             style="background: var(--bg-card-strong)">
           <div class="text-xs font-semibold tracking-widest uppercase text-iron mb-2">탱커 예상 대기</div>
           <div class="text-2xl font-bold text-wow-rare">{{ avgWait.tank }}</div>
           <div class="text-xs text-steel mt-1">평균</div>
@@ -131,7 +131,7 @@ function ageLabel(age) {
 
         <!-- DPS avg wait -->
         <div class="rounded-2xl border border-rim/50 p-5 text-center"
-             style="background: rgba(15,15,26,0.85)">
+             style="background: var(--bg-card-strong)">
           <div class="text-xs font-semibold tracking-widest uppercase text-iron mb-2">딜러 예상 대기</div>
           <div class="text-2xl font-bold" style="color:#ff4646">{{ avgWait.dps }}</div>
           <div class="text-xs text-steel mt-1">평균</div>
@@ -142,7 +142,7 @@ function ageLabel(age) {
 
         <!-- ── Role breakdown ──────────────────────── -->
         <div class="lg:col-span-3 rounded-[2rem] border border-rim/50 p-7"
-             style="background: rgba(15,15,26,0.8)">
+             style="background: var(--bg-card)">
           <div class="text-sm font-semibold text-silver mb-6">역할별 현황</div>
 
           <div class="flex flex-col gap-5">
@@ -163,7 +163,7 @@ function ageLabel(age) {
                   <span class="text-xs text-steel">명 · {{ pct(q.tank) }}%</span>
                 </div>
               </div>
-              <div class="h-2 rounded-full overflow-hidden" style="background: rgba(42,42,74,0.6)">
+              <div class="h-2 rounded-full overflow-hidden" style="background: var(--bg-bar-track)">
                 <div class="h-full rounded-full transition-all duration-700"
                      :style="`width:${pct(q.tank)}%; background:#0070dd`"></div>
               </div>
@@ -187,7 +187,7 @@ function ageLabel(age) {
                   <span class="text-xs text-steel">명 · {{ pct(q.heal) }}%</span>
                 </div>
               </div>
-              <div class="h-2 rounded-full overflow-hidden" style="background: rgba(42,42,74,0.6)">
+              <div class="h-2 rounded-full overflow-hidden" style="background: var(--bg-bar-track)">
                 <div class="h-full rounded-full transition-all duration-700"
                      :style="`width:${pct(q.heal)}%; background:#1eff00`"></div>
               </div>
@@ -211,7 +211,7 @@ function ageLabel(age) {
                   <span class="text-xs text-steel">명 · {{ pct(q.dps) }}%</span>
                 </div>
               </div>
-              <div class="h-2 rounded-full overflow-hidden" style="background: rgba(42,42,74,0.6)">
+              <div class="h-2 rounded-full overflow-hidden" style="background: var(--bg-bar-track)">
                 <div class="h-full rounded-full transition-all duration-700"
                      :style="`width:${pct(q.dps)}%; background:#ff4646`"></div>
               </div>
@@ -227,7 +227,7 @@ function ageLabel(age) {
                     <span class="text-xs font-semibold text-steel">{{ label }}</span>
                     <span class="text-xs text-iron tabular-nums">{{ val }}명</span>
                   </div>
-                  <div class="h-1.5 rounded-full overflow-hidden" style="background: rgba(42,42,74,0.6)">
+                  <div class="h-1.5 rounded-full overflow-hidden" style="background: var(--bg-bar-track)">
                     <div class="h-full rounded-full transition-all duration-700 bg-wow-epic"
                          :style="`width:${pct(val)}%`"></div>
                   </div>
@@ -239,7 +239,7 @@ function ageLabel(age) {
 
         <!-- ── Recent match feed ───────────────────── -->
         <div class="lg:col-span-2 rounded-[2rem] border border-rim/50 p-7 flex flex-col"
-             style="background: rgba(15,15,26,0.8)">
+             style="background: var(--bg-card)">
           <div class="flex items-center justify-between mb-6">
             <div class="text-sm font-semibold text-silver">최근 매칭</div>
             <span class="relative flex h-2 w-2">
@@ -252,7 +252,7 @@ function ageLabel(age) {
             <TransitionGroup name="feed">
               <div v-for="ev in events" :key="ev.id"
                    class="flex items-center gap-3 p-3 rounded-2xl border border-rim/30 transition-all"
-                   style="background: rgba(22,22,42,0.6)">
+                   style="background: var(--bg-button-dim)">
                 <!-- Role badge -->
                 <span class="w-8 h-8 flex-shrink-0 rounded-xl flex items-center justify-center text-[10px] font-bold"
                       :style="`background:${ROLE_BG[ev.role]}; color:${ROLE_COLOR[ev.role]}`">

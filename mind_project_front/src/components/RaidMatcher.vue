@@ -15,7 +15,7 @@
         <!-- Feature Card 1 — 소음 없는 매칭 -->
         <div class="group rounded-[2rem] p-10 border border-rim/50 flex flex-col h-full
                     transition-all duration-500 ease-out hover:-translate-y-1"
-             style="background: rgba(15,15,26,0.7); backdrop-filter: blur(12px);
+             style="background: var(--bg-card-faint); backdrop-filter: blur(12px);
                     box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset;">
           <div class="h-12 w-12 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110"
                style="background: rgba(163,53,238,0.12)">
@@ -39,7 +39,7 @@
         <!-- Feature Card 2 — 검증된 로그 -->
         <div class="group rounded-[2rem] p-10 border border-rim/50 flex flex-col h-full
                     transition-all duration-500 ease-out hover:-translate-y-1"
-             style="background: rgba(15,15,26,0.7); backdrop-filter: blur(12px);
+             style="background: var(--bg-card-faint); backdrop-filter: blur(12px);
                     box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset;">
           <div class="h-12 w-12 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110"
                style="background: rgba(0,112,221,0.12)">
@@ -65,7 +65,7 @@
              style="background: linear-gradient(135deg, rgba(255,128,0,0.4), rgba(163,53,238,0.4), rgba(0,112,221,0.3))">
           <div class="group rounded-[1.9rem] p-10 flex flex-col h-full justify-center items-center text-center
                       transition-all duration-500 ease-out"
-               style="background: rgba(15,15,26,0.95); backdrop-filter: blur(12px)">
+               style="background: var(--bg-card-opaque); backdrop-filter: blur(12px)">
 
             <!-- Legendary icon -->
             <div class="h-16 w-16 rounded-2xl flex items-center justify-center mb-6"
